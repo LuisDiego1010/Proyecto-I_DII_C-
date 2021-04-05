@@ -5,9 +5,24 @@
 #ifndef PROYECTO_I_DII_C__CLIENT_SOCKET_H
 #define PROYECTO_I_DII_C__CLIENT_SOCKET_H
 
+#include <cstdio>
+#include <iostream>
+#include <thread>
+#include <unistd.h>
+#include <cstdio>
+#include <cstdlib>
+#include <netinet/in.h>
+#include <cstring>
 
-class Server_Socket {
+using namespace std;
 
+class Client_Socket{
+    string msg_in;
+        int client_socket;
+        Client_Socket();
+    void send(string* msg);
+    void recieve();
+    void error(const char *msg);
 };
 
 
