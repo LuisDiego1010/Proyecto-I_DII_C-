@@ -5,26 +5,33 @@
 #ifndef PROYECTO_I_DII_C_SOCKET_H
 #define PROYECTO_I_DII_C_SOCKET_H
 
+
+#include <string>
 #include <cstdio>
 #include <iostream>
 #include <thread>
-#include "Socket.h"
 #include <unistd.h>
 #include <cstdio>
-#include <Server_Socket.h>
 #include <cstdlib>
-#include <netinet>
+#include <netinet/in.h>
 #include <cstring>
+
 #define PORT 8080
 
 using namespace std;
 
+
+//!
+//! \brief Server class which connect to client. Only one for server ned to be created. Use port 4040 in local_host
+//!
 class Server_Socket {
-    Server_Socket(){
-        int* socket= socket(AF_INET,);
-        *socket.bind();
-        *socket.
-    };
+    int server_socket, client_socket;
+    string msg_in;
+    Server_Socket();
+    void send(string* msg);
+    void recieve();
+    void error(const char *msg);
+
 
 };
 
