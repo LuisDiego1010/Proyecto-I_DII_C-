@@ -13,3 +13,7 @@ add_executable(Server
         Server/Server_Socket.cpp
         Server/Server_Socket.h
         "Server/Main Server.cpp")
+add_executable(InterfazC
+        InterfazC/mainwindow.cpp
+        InterfazC/mainwindow.h
+        "InterfazC/main.cpp")
