@@ -19,7 +19,9 @@ add_executable(Server
         Server/Gcollector.cpp
         Server/Gcollector.h)
 target_link_libraries(Server ${CONAN_LIBS})
+
 add_executable(Client
         "Client/Main Client.cpp" )
-add_executable(sizes "sizes/Type size.cpp")
 target_link_libraries(Client ${CONAN_LIBS})
+
+add_executable(sizes "sizes/Type size.cpp")

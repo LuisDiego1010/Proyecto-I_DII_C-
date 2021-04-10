@@ -9,7 +9,9 @@
 #include "Llist.h"
 
 using namespace std;
-
+/**
+ * @class Control the memory of the client, Use Linked list to storage metadata and ptr to the data.
+ */
 class MemoryController {
     static MemoryController* self;
     Llist * ints;

@@ -8,7 +8,10 @@
 #include <string>
 
 using namespace std;
-
+/**
+ * @class Linked list Node, storage the id, #references, a ptr to the value and the ptr of the next Node.
+ * @value is a void ptr that need to be casted to the specific type after get out of the List.
+ */
 class LNode {
     string id;
     int references;
