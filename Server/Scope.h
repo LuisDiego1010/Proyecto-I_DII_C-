@@ -43,6 +43,22 @@ private:
     Llist * floats;
     Llist * structs;
     Llist * references;
+public:
+    Llist *getInts() const;
+
+    Llist *getChars() const;
+
+    Llist *getFloats() const;
+
+    Llist *getStructs() const;
+
+    Llist *getReferences() const;
+
+    Llist *getLongs() const;
+
+    Llist *getDoubles() const;
+
+private:
     Llist * longs;
     Llist * doubles;
     Scope * Next_Scope;

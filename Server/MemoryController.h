@@ -8,12 +8,20 @@
 #include <cstdio>
 #include "Llist.h"
 #include "Scope.h"
+#include "string.h"
 
 using namespace std;
 /**
  * @class Control the memory of the client, Use Linked list to storage metadata and ptr to the data.
  */
 class MemoryController {
+    static string *ints;
+    static string *chars;
+    static string *floats;
+    static string *structs;
+    static string *references;
+    static string *longs;
+    static string *doubles;
     static MemoryController* self;
     /**
      * Start of the memory block
@@ -50,11 +58,11 @@ public:
     /**
      * Insert a new int in the actual scope
      */
-    void define_ints(string);
+    void define_ints(const string&);
     /**
      * Insert a new char in the actual scope
      */
-    void define_chars(string);
+    void define_chars(const string&);
     /**
      * Insert a new  Float in the actual scope
      */

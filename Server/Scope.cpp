@@ -90,5 +90,33 @@ Llist *Scope::getId() const {
     return id;
 }
 
+Llist *Scope::getInts() const {
+    return ints;
+}
+
+Llist *Scope::getChars() const {
+    return chars;
+}
+
+Llist *Scope::getFloats() const {
+    return floats;
+}
+
+Llist *Scope::getStructs() const {
+    return structs;
+}
+
+Llist *Scope::getReferences() const {
+    return references;
+}
+
+Llist *Scope::getLongs() const {
+    return longs;
+}
+
+Llist *Scope::getDoubles() const {
+    return doubles;
+}
+
 
 
