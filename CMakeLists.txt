@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(Proyecto_I_DII_C_)
 
-set(CMAKE_CXX_STANDARD 14 )
+set(CMAKE_CXX_STANDARD 20 )
 set(CMAKE_CXX_FLAGS )
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -17,7 +17,7 @@ add_executable(Server
         Server/LNode.cpp
         Server/LNode.h
         Server/Gcollector.cpp
-        Server/Gcollector.h)
+        Server/Gcollector.h Server/Scope.cpp Server/Scope.h)
 target_link_libraries(Server ${CONAN_LIBS})
 
 add_executable(Client

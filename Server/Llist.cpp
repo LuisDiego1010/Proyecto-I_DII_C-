@@ -4,10 +4,22 @@
 
 #include "Llist.h"
 
-const LNode &Llist::getFirst() const {
+string Llist::search(const string& id) {
+    if(First == nullptr){
+        return string ();
+    }
+    return First->search(id);
+}
+
+LNode *Llist::getFirst() const {
     return First;
 }
 
-void Llist::setFirst(const LNode &first) {
-    First = first;
+void Llist::setFirst(LNode *first) {
+    if (First!= nullptr){
+        first->setNext(First);
+        First=first;
+    }else{
+        First = first;
+    }
 }

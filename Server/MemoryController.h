@@ -7,6 +7,7 @@
 
 #include <cstdio>
 #include "Llist.h"
+#include "Scope.h"
 
 using namespace std;
 /**
@@ -14,19 +15,67 @@ using namespace std;
  */
 class MemoryController {
     static MemoryController* self;
-    Llist * ints;
-    Llist * longs;
-    Llist * chars;
-    Llist * floats;
-    Llist * doubles;
-    Llist * structs;
-    Llist * references;
+    /**
+     * Start of the memory block
+     */
+    void* ptr_start{};
+    /**
+     * End of  the memory block
+     */
+    void* ptr_End{};
+    /**
+     * ptr in the actual free to use scope
+     */
+    void* ptr_actual{};
+    /**
+     * Scope to do a delete and delete all
+     */
+    Scope* Main_Scope{};
+    /**
+     * Scope to work
+     */
+    Scope* Actual_Scope{};
+
+
 
 public:
     void* operator new(std::size_t);
-
     void operator delete(void*) ;
     MemoryController();
+
+    /**
+     * Create a new scope and replace the actual scope whit it
+     */
+    void new_scope();
+    /**
+     * Insert a new int in the actual scope
+     */
+    void define_ints(string);
+    /**
+     * Insert a new char in the actual scope
+     */
+    void define_chars(string);
+    /**
+     * Insert a new  Float in the actual scope
+     */
+    void define_floats(string);
+    /**
+     * start to create a structure
+     */
+    void define_structs(string);
+    /**
+     * Insert a new reference in the actual scope
+     */
+    void define_references(string);
+    /**
+     * Insert a new long in the actual scope
+     */
+    void define_longs(string);
+    /**
+     * Insert a double in the actual scope
+     */
+    void define_doubles();
+
 };
 
 

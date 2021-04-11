@@ -10,12 +10,13 @@
 #include "Gcollector.h"
 
 class Llist {
- LNode First;
+ LNode * First;
 public:
-    const LNode &getFirst() const;
+    LNode *getFirst() const;
 
-    void setFirst(const LNode &first);
+    void setFirst(LNode *first);
 
+    string search(const string& id);
 private:
     Gcollector* garbarge= new Gcollector;
 

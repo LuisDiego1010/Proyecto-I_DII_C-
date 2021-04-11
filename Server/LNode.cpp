@@ -35,3 +35,15 @@ LNode *LNode::getNext() const {
 void LNode::setNext(LNode *next) {
     LNode::next = next;
 }
+
+string LNode::search(const string& tag) {
+    if(id==tag){
+        return *(string*)value;
+    }
+    else if (next== nullptr){
+        return string() ;
+    }
+    return next->search(tag);
+}
+
+

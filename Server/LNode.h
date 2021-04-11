@@ -33,6 +33,7 @@ public:
     LNode *getNext() const;
 
     void setNext(LNode *next);
+    string search(const string& );
 };
 
 
