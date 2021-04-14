@@ -169,7 +169,7 @@
      <string>Count Ref</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="stdout">
+   <widget class="QTextEdit" name="stdoutCode">
     <property name="geometry">
      <rect>
       <x>10</x>

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTextStream>
+#include <iostream>
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +18,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_runbtn_clicked()
 {
-    QString code = ui->stdout->toPlainText();
+    QString code = ui->stdoutCode->toPlainText();
     QStringList listcode = code.split(QRegExp("[\n]"),QString::SkipEmptyParts);
-    qInfo( "C Style Info Message" );
 }

@@ -35,7 +35,7 @@ public:
     QLabel *valuelabel;
     QLabel *namelabel;
     QLabel *label;
-    QTextEdit *stdout;
+    QTextEdit *stdoutCode;
     QTextEdit *terminal;
     QTextEdit *ApplicationLog;
 
@@ -97,14 +97,14 @@ public:
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(570, 40, 67, 17));
-        stdout = new QTextEdit(centralWidget);
-        stdout->setObjectName(QStringLiteral("stdout"));
-        stdout->setGeometry(QRect(10, 40, 321, 221));
-        stdout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        stdout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        stdout->setTabChangesFocus(false);
-        stdout->setLineWrapMode(QTextEdit::NoWrap);
-        stdout->setReadOnly(false);
+        stdoutCode = new QTextEdit(centralWidget);
+        stdoutCode->setObjectName(QStringLiteral("stdoutCode"));
+        stdoutCode->setGeometry(QRect(10, 40, 321, 221));
+        stdoutCode->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        stdoutCode->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        stdoutCode->setTabChangesFocus(false);
+        stdoutCode->setLineWrapMode(QTextEdit::NoWrap);
+        stdoutCode->setReadOnly(false);
         terminal = new QTextEdit(centralWidget);
         terminal->setObjectName(QStringLiteral("terminal"));
         terminal->setGeometry(QRect(10, 270, 321, 91));
