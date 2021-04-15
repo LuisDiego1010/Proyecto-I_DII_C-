@@ -20,4 +20,5 @@ void MainWindow::on_runbtn_clicked()
 {
     QString code = ui->stdoutCode->toPlainText();
     QStringList listcode = code.split(QRegExp("[\n]"),QString::SkipEmptyParts);
+    ui->terminal->setText(listcode[0]);
 }
