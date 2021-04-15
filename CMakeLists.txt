@@ -17,11 +17,14 @@ add_executable(Server
         Server/LNode.cpp
         Server/LNode.h
         Server/Gcollector.cpp
-        Server/Gcollector.h Server/Scope.cpp Server/Scope.h)
+        Server/Gcollector.h
+        Server/Scope.cpp
+        Server/Scope.h)
 target_link_libraries(Server ${CONAN_LIBS})
 
 add_executable(Client
-        "Client/Main Client.cpp" )
+        "Client/Main Client.cpp"
+        InterfaceC!/Interface/Json_parser.h)
 target_link_libraries(Client ${CONAN_LIBS})
 
 add_executable(sizes "sizes/Type size.cpp")

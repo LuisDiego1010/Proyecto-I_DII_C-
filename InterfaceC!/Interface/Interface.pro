@@ -24,11 +24,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        Json_parser.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        socket.cpp
+
 
 HEADERS += \
-        mainwindow.h
+        Json_parser.h \
+        mainwindow.h \
+        socket.h
 
 FORMS += \
         mainwindow.ui
+
+
+
+unix:!macx: LIBS += -L$$PWD/../../../../.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/lib/ -lzmqpp-static
+
+INCLUDEPATH += $$PWD/../../../../.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/include/zmqpp
+DEPENDPATH += $$PWD/../../../../.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/include/zmqpp
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/lib/libzmqpp-static.a
+
+unix:!macx: LIBS += -L$$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib/ -lzmq
+
+INCLUDEPATH += $$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include
+DEPENDPATH += $$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib/libzmq.a
