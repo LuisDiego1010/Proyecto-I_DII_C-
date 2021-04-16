@@ -16,16 +16,20 @@ Scope::Scope() {
     Scope ::  doubles= new Llist;
     Scope ::  structs= new Llist;
     Scope ::  references= new Llist;
-    Scope ::  Next_Scope;
-    Scope ::  Previous_Scope;
+    Scope ::  Next_Scope= nullptr;
+    Scope ::  Previous_Scope= nullptr;
 }
 
 Scope * Scope::Search(const string& tag) {
+
     string a;
     a=this->id->search(tag);
     if(!a.empty()) {
         type=a;
         return this;
+    }
+    else if(Previous_Scope== nullptr){
+        return nullptr;
     }
     else return Previous_Scope->Search(tag) ;
 }

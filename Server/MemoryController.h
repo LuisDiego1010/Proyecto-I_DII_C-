@@ -15,13 +15,6 @@ using namespace std;
  * @class Control the memory of the client, Use Linked list to storage metadata and ptr to the data.
  */
 class MemoryController {
-    static string *ints;
-    static string *chars;
-    static string *floats;
-    static string *structs;
-    static string *references;
-    static string *longs;
-    static string *doubles;
     static MemoryController* self;
     /**
      * Start of the memory block

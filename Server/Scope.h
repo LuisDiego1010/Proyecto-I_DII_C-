@@ -74,7 +74,10 @@ public:
 
 public:
     Scope();
-
+    /**
+     * \brief brief int he actual scope and previous scopes for a variable
+     * @return the scope where the variable is saved. Or nullptr if no founded.
+     */
     Scope * Search(const string&);
 };
 
