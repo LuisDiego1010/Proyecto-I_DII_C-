@@ -27,13 +27,13 @@ SOURCES += \
         Json_parser.cpp \
         main.cpp \
         mainwindow.cpp \
-        socket.cpp
+        socket_client.cpp
 
 
 HEADERS += \
         Json_parser.h \
         mainwindow.h \
-        socket.h
+        socket_client.h
 
 FORMS += \
         mainwindow.ui
@@ -53,3 +53,7 @@ INCLUDEPATH += $$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9
 DEPENDPATH += $$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include
 
 unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib/libzmq.a
+
+
+
+unix:!macx: LIBS += -lzmqpp-static

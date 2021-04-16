@@ -19,7 +19,7 @@ private slots:
     void on_runbtn_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui{};
 };
 
 #endif // MAINWINDOW_H

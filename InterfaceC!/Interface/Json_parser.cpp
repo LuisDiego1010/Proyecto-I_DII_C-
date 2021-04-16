@@ -6,7 +6,6 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include "Json_parser.h"
-#include "json.hpp"
 
 std::string Json_parser::qt_json(QString a) {
     std::string Json_string;
@@ -27,6 +26,9 @@ std::string Json_parser::qt_json(QString a) {
             Json["type"]="Declaration";
             Json["left"]=left;
             Json["rigth"]=rigth;
+        }else{
+            Json["type"]="error";
+            Json["text"]=a;
         }
 }
     QJsonDocument doc(Json);
