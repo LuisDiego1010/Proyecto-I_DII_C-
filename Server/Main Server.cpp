@@ -23,36 +23,37 @@ int main(){
     cout<<"init"<<endl;
     test();
     cout<<"test runned"<<endl;
-//    const endpoint_t endpoint ="tcp://*:4040";
-//    // initialize the 0MQ context
-//    zmqpp::context context;
-//
-//    // generate a reply socket
-//    zmqpp::socket_type type = zmqpp::socket_type::reply;
-//    socket Socket= socket (context, type);
-//
-//    // bind to the socket
-//    Socket.bind(endpoint);
-//
-//    std::string msg="b";
-//    std::cout<<msg;
-//    bool a=true;
-//    while(a){
-//        std::string Request;
-//        Socket.receive(Request);
-//        std::cout<<Request;
-////        call to things
-//
-//        message_t reply;
-////        reply.copy(msg.data());
-//        Socket.send("server");
-//
-//        if (msg.empty()) {
-//            return 0;
-//
-//        }
-//        a= false;
-//    }
+    const endpoint_t endpoint ="tcp://*:4040";
+    // initialize the 0MQ context
+    zmqpp::context context;
+
+    // generate a reply socket
+    zmqpp::socket_type type = zmqpp::socket_type::reply;
+    socket Socket= socket (context, type);
+
+    // bind to the socket
+    Socket.bind(endpoint);
+
+    std::string msg="b";
+    std::cout<<msg;
+    bool a=true;
+    while(a){
+        std::string Request;
+        Socket.receive(Request);
+        std::cout<<"hello";
+        std::cout<<Request<<"hello";
+//        call to things
+
+        message_t reply;
+//        reply.copy(msg.data());
+        Socket.send(R"({"text":"hola","logger":"error"})");
+
+        if (msg.empty()) {
+            return 0;
+
+        }
+        a= false;
+    }
 
 }
 void test(){

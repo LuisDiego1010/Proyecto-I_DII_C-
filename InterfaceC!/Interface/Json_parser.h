@@ -10,6 +10,7 @@
 
 
 class Json_parser {
+public:
    std::string qt_json(QString a);
 };
 

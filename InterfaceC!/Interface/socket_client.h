@@ -2,20 +2,21 @@
 #define SOCKET_H
 #include <zmqpp/zmqpp.hpp>
 #include <QStringLiteral>
+#include <QJsonObject>
+#include <QJsonDocument>
 
-class Socket
+
+class Socket_Client
 {
 public:
-    static const zmqpp::endpoint_t endpoint;
+    Socket_Client();
+    zmqpp::context context;
+    // generate a request socket
+    zmqpp::socket_type type = zmqpp::socket_type::request;
+    zmqpp::socket * socket= new zmqpp:: socket(context, type);
 
-       // initialize the 0MQ context
-       zmqpp::context context;
-
-       // generate a request socket
-       zmqpp::socket_type type;
-
-       zmqpp::socket socket;
     void Init();
+    QJsonDocument Comunicatte(std::string );
 };
 
 #endif // SOCKET_H
