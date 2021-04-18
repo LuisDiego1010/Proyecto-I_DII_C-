@@ -23,7 +23,7 @@ std::string Json_parser::qt_json(QString a) {
         if(type!=std::string::npos){
             QString left=QString::fromStdString(line.substr(0,type));
             QString rigth=QString::fromStdString(line.substr(type,line.length()-type));
-            Json["type"]="Declaration";
+            Json["type"]="declaration";
             Json["left"]=left;
             Json["rigth"]=rigth;
         }else{

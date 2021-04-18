@@ -30,6 +30,7 @@ int main(){
     // bind to the socket
     Socket.connect("tcp://127.0.0.1:4040");
 
+
     string msg= "afff";
     cout<<"mm";
     comunicate(&msg,&Socket);

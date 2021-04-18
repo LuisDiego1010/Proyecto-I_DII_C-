@@ -75,7 +75,9 @@ public:
     /**
      * Insert a double in the actual scope
      */
-    void define_doubles();
+    void define_doubles(string);
+
+    void testing_scope();
 
 };
 

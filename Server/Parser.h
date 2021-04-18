@@ -42,7 +42,7 @@ public:
      * \brief Recursive function that determine what to do with the instruction.
      * @param instruction
      */
-    void Extract_instruction(string instruction);
+    void Extract_instruction(const string& instruction);
     /**
      * Auxiliary function to be called by another fucntions
      * @param instruction
