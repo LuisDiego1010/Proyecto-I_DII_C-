@@ -28,7 +28,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         socket_client.cpp
-
+LIBS += \
+        -lboost_system\
 
 HEADERS += \
         Json_parser.h \
