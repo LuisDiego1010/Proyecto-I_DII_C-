@@ -100,7 +100,7 @@
    <widget class="QPushButton" name="clearbtn">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>240</x>
       <y>370</y>
       <width>89</width>
       <height>25</height>

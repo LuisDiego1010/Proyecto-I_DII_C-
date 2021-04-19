@@ -38,13 +38,13 @@ endmacro()
 #################
 ###  ZMQPP
 #################
-set(CONAN_ZMQPP_ROOT "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8")
-set(CONAN_INCLUDE_DIRS_ZMQPP "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/include")
-set(CONAN_LIB_DIRS_ZMQPP "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/lib")
+set(CONAN_ZMQPP_ROOT "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8")
+set(CONAN_INCLUDE_DIRS_ZMQPP "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/include")
+set(CONAN_LIB_DIRS_ZMQPP "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/lib")
 set(CONAN_BIN_DIRS_ZMQPP )
 set(CONAN_RES_DIRS_ZMQPP )
 set(CONAN_SRC_DIRS_ZMQPP )
-set(CONAN_BUILD_DIRS_ZMQPP "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/")
+set(CONAN_BUILD_DIRS_ZMQPP "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/")
 set(CONAN_FRAMEWORK_DIRS_ZMQPP )
 set(CONAN_LIBS_ZMQPP zmqpp-static)
 set(CONAN_PKG_LIBS_ZMQPP zmqpp-static)
@@ -74,15 +74,53 @@ set(CONAN_LIBS_ZMQPP ${CONAN_PKG_LIBS_ZMQPP} ${CONAN_SYSTEM_LIBS_ZMQPP} ${CONAN_
 
 
 #################
+###  NLOHMANN_JSON
+#################
+set(CONAN_NLOHMANN_JSON_ROOT "/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9")
+set(CONAN_INCLUDE_DIRS_NLOHMANN_JSON "/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include")
+set(CONAN_LIB_DIRS_NLOHMANN_JSON )
+set(CONAN_BIN_DIRS_NLOHMANN_JSON )
+set(CONAN_RES_DIRS_NLOHMANN_JSON )
+set(CONAN_SRC_DIRS_NLOHMANN_JSON )
+set(CONAN_BUILD_DIRS_NLOHMANN_JSON "/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/")
+set(CONAN_FRAMEWORK_DIRS_NLOHMANN_JSON )
+set(CONAN_LIBS_NLOHMANN_JSON )
+set(CONAN_PKG_LIBS_NLOHMANN_JSON )
+set(CONAN_SYSTEM_LIBS_NLOHMANN_JSON )
+set(CONAN_FRAMEWORKS_NLOHMANN_JSON )
+set(CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON "")  # Will be filled later
+set(CONAN_DEFINES_NLOHMANN_JSON )
+set(CONAN_BUILD_MODULES_PATHS_NLOHMANN_JSON )
+# COMPILE_DEFINITIONS are equal to CONAN_DEFINES without -D, for targets
+set(CONAN_COMPILE_DEFINITIONS_NLOHMANN_JSON )
+
+set(CONAN_C_FLAGS_NLOHMANN_JSON "")
+set(CONAN_CXX_FLAGS_NLOHMANN_JSON "")
+set(CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON "")
+set(CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON "")
+
+# For modern cmake targets we use the list variables (separated with ;)
+set(CONAN_C_FLAGS_NLOHMANN_JSON_LIST "")
+set(CONAN_CXX_FLAGS_NLOHMANN_JSON_LIST "")
+set(CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_LIST "")
+set(CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON_LIST "")
+
+# Apple Frameworks
+conan_find_apple_frameworks(CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON "${CONAN_FRAMEWORKS_NLOHMANN_JSON}" "_NLOHMANN_JSON" "")
+# Append to aggregated values variable
+set(CONAN_LIBS_NLOHMANN_JSON ${CONAN_PKG_LIBS_NLOHMANN_JSON} ${CONAN_SYSTEM_LIBS_NLOHMANN_JSON} ${CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON})
+
+
+#################
 ###  ZEROMQ
 #################
-set(CONAN_ZEROMQ_ROOT "/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c")
-set(CONAN_INCLUDE_DIRS_ZEROMQ "/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include")
-set(CONAN_LIB_DIRS_ZEROMQ "/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib")
+set(CONAN_ZEROMQ_ROOT "/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c")
+set(CONAN_INCLUDE_DIRS_ZEROMQ "/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include")
+set(CONAN_LIB_DIRS_ZEROMQ "/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib")
 set(CONAN_BIN_DIRS_ZEROMQ )
 set(CONAN_RES_DIRS_ZEROMQ )
 set(CONAN_SRC_DIRS_ZEROMQ )
-set(CONAN_BUILD_DIRS_ZEROMQ "/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/")
+set(CONAN_BUILD_DIRS_ZEROMQ "/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/")
 set(CONAN_FRAMEWORK_DIRS_ZEROMQ )
 set(CONAN_LIBS_ZEROMQ zmq)
 set(CONAN_PKG_LIBS_ZEROMQ zmq)
@@ -114,13 +152,13 @@ set(CONAN_LIBS_ZEROMQ ${CONAN_PKG_LIBS_ZEROMQ} ${CONAN_SYSTEM_LIBS_ZEROMQ} ${CON
 #################
 ###  LIBSODIUM
 #################
-set(CONAN_LIBSODIUM_ROOT "/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054")
-set(CONAN_INCLUDE_DIRS_LIBSODIUM "/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/include")
-set(CONAN_LIB_DIRS_LIBSODIUM "/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/lib")
+set(CONAN_LIBSODIUM_ROOT "/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054")
+set(CONAN_INCLUDE_DIRS_LIBSODIUM "/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/include")
+set(CONAN_LIB_DIRS_LIBSODIUM "/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/lib")
 set(CONAN_BIN_DIRS_LIBSODIUM )
 set(CONAN_RES_DIRS_LIBSODIUM )
 set(CONAN_SRC_DIRS_LIBSODIUM )
-set(CONAN_BUILD_DIRS_LIBSODIUM "/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/")
+set(CONAN_BUILD_DIRS_LIBSODIUM "/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/")
 set(CONAN_FRAMEWORK_DIRS_LIBSODIUM )
 set(CONAN_LIBS_LIBSODIUM sodium)
 set(CONAN_PKG_LIBS_LIBSODIUM sodium)
@@ -163,7 +201,7 @@ set(CONAN_SETTINGS_COMPILER_VERSION "9")
 set(CONAN_SETTINGS_OS "Linux")
 set(CONAN_SETTINGS_OS_BUILD "Linux")
 
-set(CONAN_DEPENDENCIES zmqpp zeromq libsodium)
+set(CONAN_DEPENDENCIES zmqpp nlohmann_json zeromq libsodium)
 # Storing original command line args (CMake helper) flags
 set(CONAN_CMD_CXX_FLAGS ${CONAN_CXX_FLAGS})
 
@@ -171,12 +209,13 @@ set(CONAN_CMD_SHARED_LINKER_FLAGS ${CONAN_SHARED_LINKER_FLAGS})
 set(CONAN_CMD_C_FLAGS ${CONAN_C_FLAGS})
 # Defining accumulated conan variables for all deps
 
-set(CONAN_INCLUDE_DIRS "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/include"
-			"/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include"
-			"/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/include" ${CONAN_INCLUDE_DIRS})
-set(CONAN_LIB_DIRS "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/lib"
-			"/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib"
-			"/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/lib" ${CONAN_LIB_DIRS})
+set(CONAN_INCLUDE_DIRS "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/include"
+			"/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include"
+			"/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include"
+			"/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/include" ${CONAN_INCLUDE_DIRS})
+set(CONAN_LIB_DIRS "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/lib"
+			"/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/lib"
+			"/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/lib" ${CONAN_LIB_DIRS})
 set(CONAN_BIN_DIRS  ${CONAN_BIN_DIRS})
 set(CONAN_RES_DIRS  ${CONAN_RES_DIRS})
 set(CONAN_FRAMEWORK_DIRS  ${CONAN_FRAMEWORK_DIRS})
@@ -187,9 +226,10 @@ set(CONAN_FRAMEWORKS  ${CONAN_FRAMEWORKS})
 set(CONAN_FRAMEWORKS_FOUND "")  # Will be filled later
 set(CONAN_DEFINES "-DZMQ_STATIC" ${CONAN_DEFINES})
 set(CONAN_BUILD_MODULES_PATHS  ${CONAN_BUILD_MODULES_PATHS})
-set(CONAN_CMAKE_MODULE_PATH "/home/isaac/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/"
-			"/home/isaac/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/"
-			"/home/isaac/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/" ${CONAN_CMAKE_MODULE_PATH})
+set(CONAN_CMAKE_MODULE_PATH "/home/diegoubuntu/.conan/data/zmqpp/4.2.0/_/_/package/526382e62919e595b7a1be9560a68e5e3ba1d5b8/"
+			"/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/"
+			"/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/"
+			"/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/" ${CONAN_CMAKE_MODULE_PATH})
 
 set(CONAN_CXX_FLAGS " ${CONAN_CXX_FLAGS}")
 set(CONAN_SHARED_LINKER_FLAGS " ${CONAN_SHARED_LINKER_FLAGS}")
@@ -281,6 +321,76 @@ macro(conan_define_targets)
                                                                   $<$<CONFIG:RelWithDebInfo>:${CONAN_C_FLAGS_ZMQPP_RELWITHDEBINFO_LIST} ${CONAN_CXX_FLAGS_ZMQPP_RELWITHDEBINFO_LIST}>
                                                                   $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_ZMQPP_MINSIZEREL_LIST} ${CONAN_CXX_FLAGS_ZMQPP_MINSIZEREL_LIST}>
                                                                   $<$<CONFIG:Debug>:${CONAN_C_FLAGS_ZMQPP_DEBUG_LIST}  ${CONAN_CXX_FLAGS_ZMQPP_DEBUG_LIST}>)
+
+
+    set(_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES "${CONAN_SYSTEM_LIBS_NLOHMANN_JSON} ${CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON} ")
+    string(REPLACE " " ";" _CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES}")
+    conan_package_library_targets("${CONAN_PKG_LIBS_NLOHMANN_JSON}" "${CONAN_LIB_DIRS_NLOHMANN_JSON}"
+                                  CONAN_PACKAGE_TARGETS_NLOHMANN_JSON "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES}"
+                                  "" nlohmann_json)
+    set(_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_DEBUG "${CONAN_SYSTEM_LIBS_NLOHMANN_JSON_DEBUG} ${CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON_DEBUG} ")
+    string(REPLACE " " ";" _CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_DEBUG "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_DEBUG}")
+    conan_package_library_targets("${CONAN_PKG_LIBS_NLOHMANN_JSON_DEBUG}" "${CONAN_LIB_DIRS_NLOHMANN_JSON_DEBUG}"
+                                  CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_DEBUG "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_DEBUG}"
+                                  "debug" nlohmann_json)
+    set(_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELEASE "${CONAN_SYSTEM_LIBS_NLOHMANN_JSON_RELEASE} ${CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON_RELEASE} ")
+    string(REPLACE " " ";" _CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELEASE "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELEASE}")
+    conan_package_library_targets("${CONAN_PKG_LIBS_NLOHMANN_JSON_RELEASE}" "${CONAN_LIB_DIRS_NLOHMANN_JSON_RELEASE}"
+                                  CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_RELEASE "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELEASE}"
+                                  "release" nlohmann_json)
+    set(_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELWITHDEBINFO "${CONAN_SYSTEM_LIBS_NLOHMANN_JSON_RELWITHDEBINFO} ${CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON_RELWITHDEBINFO} ")
+    string(REPLACE " " ";" _CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELWITHDEBINFO "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELWITHDEBINFO}")
+    conan_package_library_targets("${CONAN_PKG_LIBS_NLOHMANN_JSON_RELWITHDEBINFO}" "${CONAN_LIB_DIRS_NLOHMANN_JSON_RELWITHDEBINFO}"
+                                  CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_RELWITHDEBINFO "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELWITHDEBINFO}"
+                                  "relwithdebinfo" nlohmann_json)
+    set(_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_MINSIZEREL "${CONAN_SYSTEM_LIBS_NLOHMANN_JSON_MINSIZEREL} ${CONAN_FRAMEWORKS_FOUND_NLOHMANN_JSON_MINSIZEREL} ")
+    string(REPLACE " " ";" _CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_MINSIZEREL "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_MINSIZEREL}")
+    conan_package_library_targets("${CONAN_PKG_LIBS_NLOHMANN_JSON_MINSIZEREL}" "${CONAN_LIB_DIRS_NLOHMANN_JSON_MINSIZEREL}"
+                                  CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_MINSIZEREL "${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_MINSIZEREL}"
+                                  "minsizerel" nlohmann_json)
+
+    add_library(CONAN_PKG::nlohmann_json INTERFACE IMPORTED)
+
+    # Property INTERFACE_LINK_FLAGS do not work, necessary to add to INTERFACE_LINK_LIBRARIES
+    set_property(TARGET CONAN_PKG::nlohmann_json PROPERTY INTERFACE_LINK_LIBRARIES ${CONAN_PACKAGE_TARGETS_NLOHMANN_JSON} ${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES}
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,SHARED_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,MODULE_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,EXECUTABLE>:${CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON_LIST}>
+
+                                                                 $<$<CONFIG:Release>:${CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_RELEASE} ${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELEASE}
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,SHARED_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_RELEASE_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,MODULE_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_RELEASE_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,EXECUTABLE>:${CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON_RELEASE_LIST}>>
+
+                                                                 $<$<CONFIG:RelWithDebInfo>:${CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_RELWITHDEBINFO} ${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_RELWITHDEBINFO}
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,SHARED_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_RELWITHDEBINFO_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,MODULE_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_RELWITHDEBINFO_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,EXECUTABLE>:${CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON_RELWITHDEBINFO_LIST}>>
+
+                                                                 $<$<CONFIG:MinSizeRel>:${CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_MINSIZEREL} ${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_MINSIZEREL}
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,SHARED_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_MINSIZEREL_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,MODULE_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_MINSIZEREL_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,EXECUTABLE>:${CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON_MINSIZEREL_LIST}>>
+
+                                                                 $<$<CONFIG:Debug>:${CONAN_PACKAGE_TARGETS_NLOHMANN_JSON_DEBUG} ${_CONAN_PKG_LIBS_NLOHMANN_JSON_DEPENDENCIES_DEBUG}
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,SHARED_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_DEBUG_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,MODULE_LIBRARY>:${CONAN_SHARED_LINKER_FLAGS_NLOHMANN_JSON_DEBUG_LIST}>
+                                                                 $<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,EXECUTABLE>:${CONAN_EXE_LINKER_FLAGS_NLOHMANN_JSON_DEBUG_LIST}>>)
+    set_property(TARGET CONAN_PKG::nlohmann_json PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CONAN_INCLUDE_DIRS_NLOHMANN_JSON}
+                                                                      $<$<CONFIG:Release>:${CONAN_INCLUDE_DIRS_NLOHMANN_JSON_RELEASE}>
+                                                                      $<$<CONFIG:RelWithDebInfo>:${CONAN_INCLUDE_DIRS_NLOHMANN_JSON_RELWITHDEBINFO}>
+                                                                      $<$<CONFIG:MinSizeRel>:${CONAN_INCLUDE_DIRS_NLOHMANN_JSON_MINSIZEREL}>
+                                                                      $<$<CONFIG:Debug>:${CONAN_INCLUDE_DIRS_NLOHMANN_JSON_DEBUG}>)
+    set_property(TARGET CONAN_PKG::nlohmann_json PROPERTY INTERFACE_COMPILE_DEFINITIONS ${CONAN_COMPILE_DEFINITIONS_NLOHMANN_JSON}
+                                                                      $<$<CONFIG:Release>:${CONAN_COMPILE_DEFINITIONS_NLOHMANN_JSON_RELEASE}>
+                                                                      $<$<CONFIG:RelWithDebInfo>:${CONAN_COMPILE_DEFINITIONS_NLOHMANN_JSON_RELWITHDEBINFO}>
+                                                                      $<$<CONFIG:MinSizeRel>:${CONAN_COMPILE_DEFINITIONS_NLOHMANN_JSON_MINSIZEREL}>
+                                                                      $<$<CONFIG:Debug>:${CONAN_COMPILE_DEFINITIONS_NLOHMANN_JSON_DEBUG}>)
+    set_property(TARGET CONAN_PKG::nlohmann_json PROPERTY INTERFACE_COMPILE_OPTIONS ${CONAN_C_FLAGS_NLOHMANN_JSON_LIST} ${CONAN_CXX_FLAGS_NLOHMANN_JSON_LIST}
+                                                                  $<$<CONFIG:Release>:${CONAN_C_FLAGS_NLOHMANN_JSON_RELEASE_LIST} ${CONAN_CXX_FLAGS_NLOHMANN_JSON_RELEASE_LIST}>
+                                                                  $<$<CONFIG:RelWithDebInfo>:${CONAN_C_FLAGS_NLOHMANN_JSON_RELWITHDEBINFO_LIST} ${CONAN_CXX_FLAGS_NLOHMANN_JSON_RELWITHDEBINFO_LIST}>
+                                                                  $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_NLOHMANN_JSON_MINSIZEREL_LIST} ${CONAN_CXX_FLAGS_NLOHMANN_JSON_MINSIZEREL_LIST}>
+                                                                  $<$<CONFIG:Debug>:${CONAN_C_FLAGS_NLOHMANN_JSON_DEBUG_LIST}  ${CONAN_CXX_FLAGS_NLOHMANN_JSON_DEBUG_LIST}>)
 
 
     set(_CONAN_PKG_LIBS_ZEROMQ_DEPENDENCIES "${CONAN_SYSTEM_LIBS_ZEROMQ} ${CONAN_FRAMEWORKS_FOUND_ZEROMQ} CONAN_PKG::libsodium")
@@ -422,7 +532,7 @@ macro(conan_define_targets)
                                                                   $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_LIBSODIUM_MINSIZEREL_LIST} ${CONAN_CXX_FLAGS_LIBSODIUM_MINSIZEREL_LIST}>
                                                                   $<$<CONFIG:Debug>:${CONAN_C_FLAGS_LIBSODIUM_DEBUG_LIST}  ${CONAN_CXX_FLAGS_LIBSODIUM_DEBUG_LIST}>)
 
-    set(CONAN_TARGETS CONAN_PKG::zmqpp CONAN_PKG::zeromq CONAN_PKG::libsodium)
+    set(CONAN_TARGETS CONAN_PKG::zmqpp CONAN_PKG::nlohmann_json CONAN_PKG::zeromq CONAN_PKG::libsodium)
 
 endmacro()
 

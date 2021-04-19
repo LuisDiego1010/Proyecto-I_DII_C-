@@ -1,0 +1,54 @@
+{
+ "graph_lock": {
+  "nodes": {
+   "0": {
+    "options": "libsodium:PIE=False\nlibsodium:fPIC=True\nlibsodium:shared=False\nlibsodium:use_soname=True\nzeromq:encryption=libsodium\nzeromq:fPIC=True\nzeromq:poller=None\nzeromq:shared=False\nzeromq:with_norm=False\nzmqpp:fPIC=True\nzmqpp:shared=False",
+    "requires": [
+     "1",
+     "3",
+     "2",
+     "4"
+    ],
+    "path": "../conanfile.txt",
+    "context": "host"
+   },
+   "1": {
+    "ref": "zmqpp/4.2.0",
+    "options": "fPIC=True\nshared=False\nlibsodium:PIE=False\nlibsodium:fPIC=True\nlibsodium:shared=False\nlibsodium:use_soname=True\nzeromq:encryption=libsodium\nzeromq:fPIC=True\nzeromq:poller=None\nzeromq:shared=False\nzeromq:with_norm=False",
+    "package_id": "526382e62919e595b7a1be9560a68e5e3ba1d5b8",
+    "prev": "0",
+    "requires": [
+     "2"
+    ],
+    "context": "host"
+   },
+   "2": {
+    "ref": "zeromq/4.3.3",
+    "options": "encryption=libsodium\nfPIC=True\npoller=None\nshared=False\nwith_norm=False\nlibsodium:PIE=False\nlibsodium:fPIC=True\nlibsodium:shared=False\nlibsodium:use_soname=True",
+    "package_id": "4a4500bdf9b12024d2cf6e38334aa40f7cabc37c",
+    "prev": "0",
+    "requires": [
+     "3"
+    ],
+    "context": "host"
+   },
+   "3": {
+    "ref": "libsodium/1.0.18",
+    "options": "PIE=False\nfPIC=True\nshared=False\nuse_soname=True",
+    "package_id": "090017fccd7b493020671020e5964801d6ba8054",
+    "prev": "0",
+    "context": "host"
+   },
+   "4": {
+    "ref": "nlohmann_json/3.9.1",
+    "options": "",
+    "package_id": "5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9",
+    "prev": "0",
+    "context": "host"
+   }
+  },
+  "revisions_enabled": false
+ },
+ "version": "0.4",
+ "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Release\ncompiler=gcc\ncompiler.libcxx=libstdc++11\ncompiler.version=9\nos=Linux\nos_build=Linux\n[options]\n[build_requires]\n[env]\n"
+}

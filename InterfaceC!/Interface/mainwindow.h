@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "socket_client.h"
+//#include "socket_client.h"
 #include "Json_parser.h"
 namespace Ui {
 class MainWindow;
@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Socket_Client Socket= Socket_Client();
+    //Socket_Client Socket= Socket_Client();
     Json_parser Parser=Json_parser();
 
 private slots:
