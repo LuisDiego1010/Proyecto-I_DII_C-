@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Json_parser.h"
 #include "socket_client.h"
+
+using namespace std;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -19,10 +21,16 @@ MainWindow::~MainWindow()
 void MainWindow::on_runbtn_clicked()
 {
     QString code = ui->stdoutCode->toPlainText();
-    QStringList listcode = code.split(QRegExp("[\n]"),QString::SkipEmptyParts);
+    QString code2= code;
+    QStringList listcode = code2.split(QRegExp("[\n]"),QString::SkipEmptyParts);
+    QString length = QString::number(listcode.length());
+    ui->terminal->setText(length);
+    for (int count=0; (listcode.size()+1); count++){
+        ui->terminal->setText(listcode[count]);
+    }
     //Mandar_todo
 
-    ui->terminal->setText(listcode[0]);
+
     //QJsonDocument server_info= Socket.Comunicatte(Parser.qt_json(listcode[0]));
     //std::cout<<"msg from server:"<<server_info.object().value("logger").toString().toUtf8().constData();
     //ui->terminal->setText(server_info.object().value("logger").toString());
