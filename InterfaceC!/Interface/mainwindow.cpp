@@ -24,9 +24,10 @@ void MainWindow::on_runbtn_clicked()
     QString code2= code;
     QStringList listcode = code2.split(QRegExp("[\n]"),QString::SkipEmptyParts);
     QString length = QString::number(listcode.length());
-    ui->terminal->setText(length);
-    for (int count=0; (listcode.size()+1); count++){
-        ui->terminal->setText(listcode[count]);
+    for (int count=0; count==(listcode.length()+1); count++){
+        QJsonDocument server_info= Socket.Comunicatte(Parser.qt_json(listcode[count]));
+        std::cout<<"msg from server:"<<server_info.object().value("logger").toString().toUtf8().constData();
+        ui->terminal->setText(server_info.object().value("logger").toString());
     }
     //Mandar_todo
 
