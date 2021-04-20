@@ -1,0 +1,54 @@
+{
+ "options": [
+  [
+   "libsodium:PIE",
+   "False"
+  ],
+  [
+   "libsodium:fPIC",
+   "True"
+  ],
+  [
+   "libsodium:shared",
+   "False"
+  ],
+  [
+   "libsodium:use_soname",
+   "True"
+  ],
+  [
+   "zeromq:encryption",
+   "libsodium"
+  ],
+  [
+   "zeromq:fPIC",
+   "True"
+  ],
+  [
+   "zeromq:poller",
+   "None"
+  ],
+  [
+   "zeromq:shared",
+   "False"
+  ],
+  [
+   "zeromq:with_norm",
+   "False"
+  ],
+  [
+   "zmqpp:fPIC",
+   "True"
+  ],
+  [
+   "zmqpp:shared",
+   "False"
+  ]
+ ],
+ "root": {
+  "name": null,
+  "version": null,
+  "user": null,
+  "channel": null
+ }
+}

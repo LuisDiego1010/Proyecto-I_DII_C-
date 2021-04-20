@@ -1,0 +1,8 @@
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/Server.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/Client.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/sizes.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/Server_autogen.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/Client_autogen.dir
+/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/sizes_autogen.dir

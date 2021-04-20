@@ -1,0 +1,47 @@
+conan install "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-" "-if=/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug" -pr=default
+Configuration:
+[settings]
+arch=x86_64
+arch_build=x86_64
+build_type=Release
+compiler=gcc
+compiler.libcxx=libstdc++11
+compiler.version=9
+os=Linux
+os_build=Linux
+[options]
+[build_requires]
+[env]
+
+conanfile.txt: Installing package
+Requirements
+    libsodium/1.0.18 from 'conan-center' - Cache
+    nlohmann_json/3.9.1 from 'conan-center' - Cache
+    zeromq/4.3.3 from 'conan-center' - Cache
+    zmqpp/4.2.0 from 'conan-center' - Cache
+Packages
+    libsodium/1.0.18:090017fccd7b493020671020e5964801d6ba8054 - Cache
+    nlohmann_json/3.9.1:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Cache
+    zeromq/4.3.3:4a4500bdf9b12024d2cf6e38334aa40f7cabc37c - Cache
+    zmqpp/4.2.0:526382e62919e595b7a1be9560a68e5e3ba1d5b8 - Cache
+
+Installing (downloading, building) binaries...
+libsodium/1.0.18: Already installed!
+nlohmann_json/3.9.1: Already installed!
+zeromq/4.3.3: Already installed!
+zmqpp/4.2.0: Already installed!
+conanfile.txt: Generator cmake created conanbuildinfo.cmake
+conanfile.txt: Generator txt created conanbuildinfo.txt
+conanfile.txt: Generated conaninfo.txt
+conanfile.txt: Generated graphinfo
+/snap/clion/149/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-"
+-- Conan: Adjusting output directories
+-- Conan: Using cmake global configuration
+-- Conan: Adjusting default RPATHs Conan policies
+-- Conan: Adjusting language standard
+-- Current conanbuildinfo.cmake directory: /home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug
+-- Conan: Compiler GCC>=5, checking major version 9
+-- Conan: Checking correct version: 9
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug
