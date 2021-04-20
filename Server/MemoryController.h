@@ -36,7 +36,8 @@ class MemoryController {
      * Scope to work
      */
     Scope* Actual_Scope{};
-
+public:
+    void *getPtrActual() const;
 
 
 public:
@@ -78,6 +79,8 @@ public:
     void define_doubles(string);
 
     void testing_scope();
+
+    void increment_ptr(size_t);
 
 };
 

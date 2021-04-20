@@ -3,7 +3,7 @@
 //
 
 #include "Llist.h"
-
+#include "Gcollector.h"
 string Llist::search(const string& id) {
     if(First == nullptr){
         return string ();
@@ -22,4 +22,8 @@ void Llist::setFirst(LNode *first) {
     }else{
         First = first;
     }
+}
+
+Llist::Llist() {
+    First= nullptr;
 }

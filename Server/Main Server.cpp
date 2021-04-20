@@ -7,6 +7,7 @@
 #include <zmqpp/socket.hpp>
 #include <zmqpp/context.hpp>
 #include <zmqpp/message.hpp>
+#include "Llist.h"
 #include "Parser.h"
 
 using namespace zmqpp;
@@ -46,7 +47,7 @@ int main(){
 //
 //        message_t reply;
 ////        reply.copy(msg.data());
-//        Socket.send(R"({"text":"hola","logger":"error"})");
+//        Socket.send(R"({"memory":"hola","logger":"error", "out":"bye"})");
 //
 //        if (msg.empty()) {
 //            return 0;

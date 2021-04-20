@@ -16,9 +16,10 @@ class Parser {
 private:
 
 public:
+    Parser();
     static Parser* get_Parser();
     static Parser* self;
-    MemoryController* Controller= new MemoryController;
+    MemoryController* Controller;
     /**
      * \brief Function that order a MemoryController to define a new variable
      * @param id

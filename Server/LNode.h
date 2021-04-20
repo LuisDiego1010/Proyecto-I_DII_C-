@@ -18,6 +18,7 @@ class LNode {
     void* value;
     LNode* next;
 public:
+    LNode(const string&);
     const string &getId() const;
 
     void setId(const string &id);
@@ -34,6 +35,9 @@ public:
 
     void setNext(LNode *next);
     string search(const string& );
+
+    void* operator new(std::size_t);
+    void operator delete(void*);
 };
 
 

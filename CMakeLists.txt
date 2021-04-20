@@ -30,10 +30,10 @@ add_executable(Server
         Server/MemoryController.h
         Server/LNode.cpp
         Server/LNode.h
-        Server/Gcollector.cpp
-        Server/Gcollector.h
         Server/Scope.cpp
-        Server/Scope.h)
+        Server/Scope.h
+        Server/Gcollector.cpp
+        Server/Gcollector.h)
 target_link_libraries(Server ${CONAN_LIBS})
 add_executable(Client
         "InterfaceC!/Interface/main.cpp"

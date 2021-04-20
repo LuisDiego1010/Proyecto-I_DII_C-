@@ -7,20 +7,19 @@
 
 
 #include "LNode.h"
-#include "Gcollector.h"
 
 class Llist {
- LNode * First;
+    LNode *First;
 public:
+    Llist();
+
     LNode *getFirst() const;
 
     void setFirst(LNode *first);
 
-    string search(const string& id);
-private:
-    Gcollector* garbarge= new Gcollector;
-
+    string search(const string &id);
 };
+
 
 
 #endif //PROYECTO_I_DII_C__LLIST_H

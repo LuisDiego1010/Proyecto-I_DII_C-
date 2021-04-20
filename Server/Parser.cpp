@@ -4,6 +4,7 @@
 
 #include "Parser.h"
 #include "iostream"
+#include "MemoryController.h"
 #include <nlohmann/json.hpp>
 
 using namespace std;
@@ -56,6 +57,7 @@ void Parser::Extract_instruction(const string& instruction) {
     }else {
         cout<<right<<" Error in the json"<<endl;
     }
+
 }
 
 void Parser::Instruction_Aux(string instruction) {
@@ -72,4 +74,8 @@ void Parser::Assign(string id, string value) {
 
 void Parser::Define(string id, string type) {
 
+}
+
+Parser::Parser() {
+    Controller= new MemoryController;
 }

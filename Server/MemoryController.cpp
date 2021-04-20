@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "MemoryController.h"
+#include "Gcollector.h"
 MemoryController *MemoryController:: self;
 
 
@@ -35,43 +36,43 @@ void MemoryController::new_scope() {
 }
 
 void MemoryController::define_ints(const string& id) {
-    auto * node= new LNode();
+    auto * node= new LNode("tag");
     node->setId(id);
     node->setValue((void*)new string("int"));
     testing_scope();
     Actual_Scope->getId()->setFirst(node);
-    auto * node2= new LNode();
+    Gcollector * Garbage=new Gcollector;
+    auto * node2= Garbage->getInts() ; //pedirselo al garbage
     node2->setId(id);
     node2->setValue(ptr_actual);
-    ptr_actual=(char *)ptr_actual+ sizeof(int);
     Actual_Scope->getInts()->setFirst(node2);
 
 }
 
 void MemoryController::define_chars(const string& id) {
-    auto * node= new LNode();
+    auto * node= new LNode("tag");
     node->setId(id);
     node->setValue((void *) new string("char"));
     testing_scope();
     Actual_Scope->getId()->setFirst(node);
-    auto * node2= new LNode();
+    Gcollector * Garbage=new Gcollector;
+    auto * node2= Garbage->getChars() ;
     node2->setId(id);
     node2->setValue(ptr_actual);
-    ptr_actual=(char *)ptr_actual+ sizeof(char);
     Actual_Scope->getChars()->setFirst(node2);
 
 }
 
 void MemoryController::define_floats(string tag) {
-    auto * node= new LNode();
+    auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("float"));
     testing_scope();
     Actual_Scope->getId()->setFirst(node);
-    auto * node2= new LNode();
+    Gcollector * Garbage=new Gcollector;
+    auto * node2= Garbage->getInts() ;
     node2->setId(tag);
     node2->setValue(ptr_actual);
-    ptr_actual=(char *)ptr_actual+ sizeof(float );
     Actual_Scope->getFloats()->setFirst(node2);
 
 }
@@ -84,43 +85,44 @@ void MemoryController::define_structs(string tag) {
 }
 
 void MemoryController::define_references(string tag) {
-    auto * node= new LNode();
+    auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("reference"));
     testing_scope();
     Actual_Scope->getId()->setFirst(node);
-    auto * node2= new LNode();
+
+    Gcollector * Garbage=new Gcollector;
+    auto * node2= Garbage->getReferences() ;
     node2->setId(tag);
     node2->setValue(ptr_actual);
-    ptr_actual=(char *)ptr_actual+ 4*sizeof(char);
     Actual_Scope->getReferences()->setFirst(node2);
 
 }
 
 void MemoryController::define_longs(string tag) {
-    auto * node= new LNode();
+    auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("long"));
     testing_scope();
     Actual_Scope->getId()->setFirst(node);
-    auto * node2= new LNode();
+    Gcollector * Garbage=new Gcollector;
+    auto * node2= Garbage->getLongs() ;
     node2->setId(tag);
     node2->setValue(ptr_actual);
-    ptr_actual=(char *)ptr_actual+ sizeof(long);
     Actual_Scope->getLongs()->setFirst(node2);
 
 }
 
 void MemoryController::define_doubles(string tag) {
-    auto * node= new LNode();
+    auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("double"));
     testing_scope();
     Actual_Scope->getId()->setFirst(node);
-    auto * node2= new LNode();
+    Gcollector * Garbage=new Gcollector;
+    auto * node2= Garbage->getDoubles() ;
     node2->setId(tag);
     node2->setValue(ptr_actual);
-    ptr_actual=(char *)ptr_actual+ sizeof(double);
     Actual_Scope->getDoubles()->setFirst(node2);
 
 }
@@ -129,6 +131,15 @@ void MemoryController::testing_scope() {
     if(Actual_Scope== nullptr){
         Actual_Scope==Main_Scope;
     }
+}
+
+void *MemoryController::getPtrActual() const {
+    return ptr_actual;
+}
+
+void MemoryController::increment_ptr(size_t size) {
+    ptr_actual=(char *)ptr_actual+ size;
 };
+
 
 
