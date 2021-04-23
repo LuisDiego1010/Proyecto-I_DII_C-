@@ -45,7 +45,7 @@ void MemoryController::new_scope() {
 }
 
 void MemoryController::define_ints(const string& id) {
-    BOOST_LOG_TRIVIAL(info) << "Creating an int";
+    BOOST_LOG_TRIVIAL(info) << "Creating a  type int";
     auto * node= new LNode("tag");
     node->setId(id);
     node->setValue((void*)new string("int"));
@@ -60,7 +60,7 @@ void MemoryController::define_ints(const string& id) {
 }
 
 void MemoryController::define_chars(const string& id) {
-    BOOST_LOG_TRIVIAL(info) << "Creating a string";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type string";
     auto * node= new LNode("tag");
     node->setId(id);
     node->setValue((void *) new string("char"));
@@ -75,7 +75,7 @@ void MemoryController::define_chars(const string& id) {
 }
 
 void MemoryController::define_floats(string tag) {
-    BOOST_LOG_TRIVIAL(info) << "Creating an floats";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type floats";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("float"));
@@ -113,7 +113,7 @@ void MemoryController::define_references(string tag) {
 }
 
 void MemoryController::define_longs(string tag) {
-    BOOST_LOG_TRIVIAL(info) << "Creating a long";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type long";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("long"));
@@ -128,7 +128,7 @@ void MemoryController::define_longs(string tag) {
 }
 
 void MemoryController::define_doubles(string tag) {
-    BOOST_LOG_TRIVIAL(info) << "Creating a doubles";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type double";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("double"));

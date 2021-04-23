@@ -30,8 +30,8 @@ libsodium/1.0.18: Already installed!
 nlohmann_json/3.9.1: Already installed!
 zeromq/4.3.3: Already installed!
 zmqpp/4.2.0: Already installed!
-conanfile.txt: Generator txt created conanbuildinfo.txt
 conanfile.txt: Generator cmake created conanbuildinfo.cmake
+conanfile.txt: Generator txt created conanbuildinfo.txt
 conanfile.txt: Generated conaninfo.txt
 conanfile.txt: Generated graphinfo
 /snap/clion/149/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-"
@@ -42,9 +42,6 @@ conanfile.txt: Generated graphinfo
 -- Current conanbuildinfo.cmake directory: /home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug
 -- Conan: Compiler GCC>=5, checking major version 9
 -- Conan: Checking correct version: 9
-CMake Error at CMakeLists.txt:26 (BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT):
-  Unknown CMake command "BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT".
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug

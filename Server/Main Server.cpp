@@ -66,13 +66,14 @@ int main(){
 //    std::string msg="b";
 //    std::cout<<msg;
 //    bool a=true;
+//    BOOST_LOG_TRIVIAL(info) << "Waiting for data";
 //    while(a){
 //        std::string Request;
 //        Socket.receive(Request);
 //        std::cout<<"hello";
 //        std::cout<<Request<<"hello";
 ////        call to things
-//
+//        BOOST_LOG_TRIVIAL(info) << "Send data";
 //        message_t reply;
 ////        reply.copy(msg.data());
 //        Socket.send(R"({"memory":"hola","logger":"error", "out":"bye"})");

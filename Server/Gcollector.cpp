@@ -7,6 +7,13 @@
 
 #include "LNode.h"
 #include "Llist.h"
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/sources/logger.hpp>
+#include <boost/log/core.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/global_logger_storage.hpp>
 
 using namespace std;
 
@@ -14,7 +21,9 @@ Gcollector *Gcollector:: garbarge;
 
 void *Gcollector::operator new(std::size_t) {
     if(garbarge== nullptr){
-    garbarge= :: new Gcollector;}
+    garbarge= :: new Gcollector;
+    BOOST_LOG_TRIVIAL(info) << "Creating a  GarbageCollector";
+    }
     return garbarge;
 }
 
@@ -33,6 +42,7 @@ Gcollector::Gcollector() {
 }
 
 LNode *Gcollector::getInts() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the int data position";
     if(ints->getFirst()== nullptr){
         return new LNode("int");
     }else{
@@ -45,6 +55,7 @@ LNode *Gcollector::getInts() const {
 }
 
 void Gcollector::setInts(LNode *int_node) {
+    BOOST_LOG_TRIVIAL(info) << "The int data was deleted and is in the Collector";
     if(ints->getFirst()== nullptr){
         ints->setFirst(int_node);
     }else{
@@ -54,6 +65,7 @@ void Gcollector::setInts(LNode *int_node) {
 }
 
 LNode *Gcollector::getChars() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the char data position";
     if(chars->getFirst()== nullptr){
         return new LNode("char");
     }else{
@@ -65,6 +77,7 @@ LNode *Gcollector::getChars() const {
 }
 
 void Gcollector::setChars(LNode *char_node) {
+    BOOST_LOG_TRIVIAL(info) << "The char data was deleted and is in the Collector";
     if(chars->getFirst()== nullptr){
         chars->setFirst(char_node);
     }else{
@@ -74,6 +87,7 @@ void Gcollector::setChars(LNode *char_node) {
 }
 
 LNode *Gcollector::getFloats() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the float data position";
     if(floats->getFirst()== nullptr){
         return new LNode("float");
     }else{
@@ -85,6 +99,7 @@ LNode *Gcollector::getFloats() const {
 }
 
 void Gcollector::setFloats(LNode *float_node) {
+    BOOST_LOG_TRIVIAL(info) << "The float data was deleted and is in the Collector";
     if(floats->getFirst()== nullptr){
         floats->setFirst(float_node);
     }else{
@@ -94,6 +109,7 @@ void Gcollector::setFloats(LNode *float_node) {
 }
 
 LNode *Gcollector::getStructs() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the struct position";
     if(structs->getFirst()== nullptr){
         return new LNode("struct");
     }else{
@@ -105,6 +121,7 @@ LNode *Gcollector::getStructs() const {
 }
 
 void Gcollector::setStructs(LNode *struct_node) {
+    BOOST_LOG_TRIVIAL(info) << "The struct was deleted and is in the Collector";
     if(structs->getFirst()== nullptr){
         structs->setFirst(struct_node);
     }else{
@@ -114,6 +131,7 @@ void Gcollector::setStructs(LNode *struct_node) {
 }
 
 LNode *Gcollector::getReferences() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the reference position";
     if(references->getFirst()== nullptr){
         return new LNode("reference");
     }else{
@@ -125,6 +143,7 @@ LNode *Gcollector::getReferences() const {
 }
 
 void Gcollector::setReferences(LNode *reference_node) {
+    BOOST_LOG_TRIVIAL(info) << "The reference data was deleted and is in the Collector";
     if(references->getFirst()== nullptr){
         references->setFirst(reference_node);
     }else{
@@ -134,6 +153,7 @@ void Gcollector::setReferences(LNode *reference_node) {
 }
 
 LNode *Gcollector::getLongs() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the long data position";
     if(longs->getFirst()== nullptr){
         return new LNode("long");
     }else{
@@ -145,6 +165,7 @@ LNode *Gcollector::getLongs() const {
 }
 
 void Gcollector::setLongs(LNode *long_node) {
+    BOOST_LOG_TRIVIAL(info) << "The longs data was deleted and is in the Collector";
     if(longs->getFirst()== nullptr){
         longs->setFirst(long_node);
     }else{
@@ -154,6 +175,7 @@ void Gcollector::setLongs(LNode *long_node) {
 }
 
 LNode *Gcollector::getDoubles() const {
+    BOOST_LOG_TRIVIAL(info) << "Reusing the double data position";
     if(doubles->getFirst()== nullptr){
         return new LNode("double");
     }else{
@@ -165,6 +187,7 @@ LNode *Gcollector::getDoubles() const {
 }
 
 void Gcollector::setDoubles(LNode *double_node) {
+    BOOST_LOG_TRIVIAL(info) << "The doubles data was deleted and is in the Collector";
     if(doubles->getFirst()== nullptr){
         doubles->setFirst(double_node);
     }else{

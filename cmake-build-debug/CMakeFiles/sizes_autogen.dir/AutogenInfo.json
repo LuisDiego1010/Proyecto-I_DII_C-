@@ -128,13 +128,13 @@
 		"/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include",
 		"/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include",
 		"/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/include",
-		"/usr/include",
 		"/usr/include/c++/9",
 		"/usr/include/x86_64-linux-gnu/c++/9",
 		"/usr/include/c++/9/backward",
 		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
 		"/usr/local/include",
-		"/usr/include/x86_64-linux-gnu"
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
 	],
 	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
 	"MOC_OPTIONS" : [],
