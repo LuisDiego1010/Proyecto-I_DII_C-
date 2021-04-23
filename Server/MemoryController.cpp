@@ -6,9 +6,15 @@
 #include "MemoryController.h"
 #include "Gcollector.h"
 #include <nlohmann/json.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/sources/logger.hpp>
+#include <boost/log/core.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/global_logger_storage.hpp>
 
-
-MemoryController *MemoryController::self;
+MemoryController *MemoryController:: self;
 
 
 void *MemoryController::operator new(std::size_t) {
@@ -34,6 +40,7 @@ void MemoryController::new_scope() {
     testing_scope();
     cout << "new scope" << endl;
     auto *scope = new Scope();
+    BOOST_LOG_TRIVIAL(info) << "Creating new scope";
     Actual_Scope->setNextScope(scope);
     scope->setPreviousScope(scope);
     Actual_Scope = scope;
@@ -42,6 +49,7 @@ void MemoryController::new_scope() {
 LNode *MemoryController::define_ints(const string &id) {
     testing_scope();
     if (Actual_Scope->Search(id) != nullptr) { return nullptr; }
+    BOOST_LOG_TRIVIAL(info) << "Creating a  type int";
     auto *node = new LNode("tag");
     node->setId(id);
     node->setValue((void *) new string("int"));
@@ -55,6 +63,7 @@ LNode *MemoryController::define_ints(const string &id) {
 }
 
 LNode *MemoryController::define_chars(const string &id) {
+    BOOST_LOG_TRIVIAL(info) << "Creating a type string";
     testing_scope();
     if (Actual_Scope->Search(id) != nullptr) { return nullptr; }
     auto *node = new LNode("tag");
@@ -72,6 +81,7 @@ LNode *MemoryController::define_chars(const string &id) {
 LNode *MemoryController::define_floats(string tag) {
     testing_scope();
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
+    BOOST_LOG_TRIVIAL(info) << "Creating a type floats";
     auto *node = new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("float"));
@@ -96,6 +106,7 @@ LNode *MemoryController::define_structs(string tag) {
 LNode *MemoryController::define_references(string tag) {
     testing_scope();
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
+    BOOST_LOG_TRIVIAL(info) << "Creating a reference";
     auto *node = new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("reference"));
@@ -112,6 +123,7 @@ LNode *MemoryController::define_references(string tag) {
 LNode *MemoryController::define_longs(string tag) {
     testing_scope();
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
+    BOOST_LOG_TRIVIAL(info) << "Creating a type long";
     auto *node = new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("long"));
@@ -127,6 +139,7 @@ LNode *MemoryController::define_longs(string tag) {
 LNode *MemoryController::define_doubles(string tag) {
     testing_scope();
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
+    BOOST_LOG_TRIVIAL(info) << "Creating a type double";
     auto *node = new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("double"));

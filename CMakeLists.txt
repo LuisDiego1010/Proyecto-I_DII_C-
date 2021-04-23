@@ -20,6 +20,10 @@ set(Qt5Widgets_INCLUDE_DIRS ${CONAN_LIBS})
 set (QT_DEFAULT_MAJOR_VERSION(5.15.2))
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
+find_package(Boost 1.71.0 COMPONENTS system filesystem REQUIRED)
+
+
+
 add_executable(Server
         "Server/Main Server.cpp"
         Server/Parser.cpp
