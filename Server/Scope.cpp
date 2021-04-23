@@ -7,31 +7,33 @@
 #include <utility>
 
 Scope::Scope() {
-    Scope ::  type;
-    Scope ::  id=new Llist;
-    Scope ::  ints=new Llist;
-    Scope ::  longs= new Llist;
-    Scope ::  chars= new Llist;
-    Scope ::  floats= new Llist;
-    Scope ::  doubles= new Llist;
-    Scope ::  structs= new Llist;
-    Scope ::  references= new Llist;
-    Scope ::  Next_Scope= nullptr;
-    Scope ::  Previous_Scope= nullptr;
+    Scope::type;
+    Scope::id = new Llist;
+    Scope::ints = new Llist;
+    Scope::longs = new Llist;
+    Scope::chars = new Llist;
+    Scope::floats = new Llist;
+    Scope::doubles = new Llist;
+    Scope::structs = new Llist;
+    Scope::references = new Llist;
+    Scope::Next_Scope = nullptr;
+    Scope::Previous_Scope = nullptr;
 }
-
-Scope * Scope::Search(const string& tag) {
+/**
+ * \brief search for a value tag in the available Scopes
+ * @param tag
+ * @return ptr to the Scope where the the tag was founded, nullptr if not found
+ */
+Scope *Scope::Search(const string &tag) {
 
     string a;
-    a=this->id->search(tag);
-    if(!a.empty()) {
-        type=a;
+    a = this->id->search(tag);
+    if (!a.empty()) {
+        type = a;
         return this;
-    }
-    else if(Previous_Scope== nullptr){
+    } else if (Previous_Scope == nullptr) {
         return nullptr;
-    }
-    else return Previous_Scope->Search(tag) ;
+    } else return Previous_Scope->Search(tag);
 }
 
 Scope *Scope::getNextScope() const {

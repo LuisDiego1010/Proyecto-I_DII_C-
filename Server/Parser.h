@@ -7,7 +7,10 @@
 
 
 #include "Llist.h"
+#include "LNode.h"
 #include "MemoryController.h"
+#include <nlohmann/json.hpp>
+
 /**
  * @class class that determines what to do with the instruction received by the socket.
  * See class and Extract Instruction.
@@ -17,38 +20,43 @@ private:
 
 public:
     Parser();
-    static Parser* get_Parser();
-    static Parser* self;
-    MemoryController* Controller;
+
+    static Parser *get_Parser();
+
+    static Parser *self;
+    MemoryController *Controller;
+
     /**
      * \brief Function that order a MemoryController to define a new variable
      * @param id
      * @param type
      */
-    void Define(string id, string type);
+    LNode *Define(const string&, const string&);
+
     /**
-     * \brief function to assign a value to a variable using it id
-     * @param id
+     * \brief function to assign a value to a variable by it tag
+     * @param tag
      * @param value
      */
-    void Assign(string id , string value);
+    void Assign(const string&, string);
+
     /**
-     * Auxiliary function, not expected to be called.
-     * @param id
-     * @param type
-     * @param value
+     * \brief get the LNode of a objet property or a variable
+     * @return
      */
-    void Define_assign(string id, string type, string value);
+    LNode * Aux_Assign(const string&);
+
     /**
      * \brief Recursive function that determine what to do with the instruction.
      * @param instruction
      */
-    void Extract_instruction(const string& instruction);
+    void Extract_instruction(const string &instruction);
+
     /**
-     * Auxiliary function to be called by another fucntions
+     * Auxiliary function to be called by another fucntions to do arithmetic
      * @param instruction
      */
-    void Instruction_Aux(string instruction);
+    string Instruction_Aux(string instruction);
 
 };
 

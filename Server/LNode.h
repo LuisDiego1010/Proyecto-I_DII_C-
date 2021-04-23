@@ -16,6 +16,7 @@ class LNode {
     string id;
     int references;
     void* value;
+    string type_string;
     LNode* next;
 public:
     LNode(const string&);
@@ -34,7 +35,16 @@ public:
     LNode *getNext() const;
 
     void setNext(LNode *next);
+    /**
+     * \brief Recursive function that search for a tag
+     * @param tag
+     * @return the type of the variable as a string
+     */
     string search(const string& );
+
+    const string &getTypeString() const;
+
+    void setTypeString(const string &typeString);
 
     void* operator new(std::size_t);
     void operator delete(void*);

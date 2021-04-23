@@ -18,8 +18,9 @@ public:
     void setFirst(LNode *first);
 
     string search(const string &id);
-};
 
+    LNode *getNode(string);
+};
 
 
 #endif //PROYECTO_I_DII_C__LLIST_H
