@@ -1,5 +1,5 @@
 {
-	"BUILD_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/Client_autogen",
+	"BUILD_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/BoostTest_autogen",
 	"CMAKE_BINARY_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug",
 	"CMAKE_CURRENT_BINARY_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug",
 	"CMAKE_CURRENT_SOURCE_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-",
@@ -110,28 +110,16 @@
 	"CMAKE_SOURCE_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
-	"HEADERS" : 
-	[
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/Json_parser.h",
-			"MU",
-			"DRLLSAMVLT/moc_Json_parser.cpp"
-		],
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/mainwindow.h",
-			"MU",
-			"DRLLSAMVLT/moc_mainwindow.cpp"
-		],
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/socket_client.h",
-			"MU",
-			"DRLLSAMVLT/moc_socket_client.cpp"
-		]
-	],
+	"HEADERS" : [],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/Client_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/Client_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
+	"INCLUDE_DIR" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/BoostTest_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/BoostTest_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"BOOST_ALL_NO_LIB",
+		"BOOST_FILESYSTEM_DYN_LINK",
+		"BOOST_SYSTEM_DYN_LINK"
+	],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -145,11 +133,6 @@
 		"/home/diegoubuntu/.conan/data/nlohmann_json/3.9.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include",
 		"/home/diegoubuntu/.conan/data/zeromq/4.3.3/_/_/package/4a4500bdf9b12024d2cf6e38334aa40f7cabc37c/include",
 		"/home/diegoubuntu/.conan/data/libsodium/1.0.18/_/_/package/090017fccd7b493020671020e5964801d6ba8054/include",
-		"/usr/include/x86_64-linux-gnu/qt5",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
-		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
 		"/usr/include",
 		"/usr/include/c++/9",
 		"/usr/include/x86_64-linux-gnu/c++/9",
@@ -169,45 +152,21 @@
 		"-c",
 		"/snap/clion/149/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/Client_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/BoostTest_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : 
-	[
-		"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/Server_autogen/mocs_compilation.cpp"
-	],
+	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 2,
-	"PARSE_CACHE_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/Client_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/BoostTest_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
 	"QT_VERSION_MAJOR" : 5,
 	"QT_VERSION_MINOR" : 12,
-	"SETTINGS_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/Client_autogen.dir/AutogenUsed.txt",
-	"SOURCES" : 
-	[
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/Json_parser.cpp",
-			"MU"
-		],
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/main.cpp",
-			"MU"
-		],
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/mainwindow.cpp",
-			"MU"
-		],
-		[
-			"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/InterfaceC!/Interface/socket_client.cpp",
-			"MU"
-		]
-	],
+	"SETTINGS_FILE" : "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles/BoostTest_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : [],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : 
-	[
-		"/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/Server_autogen/mocs_compilation.cpp"
-	],
+	"UIC_SKIP" : [],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
 }

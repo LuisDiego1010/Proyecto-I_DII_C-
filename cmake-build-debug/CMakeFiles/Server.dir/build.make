@@ -154,22 +154,9 @@ CMakeFiles/Server.dir/Server/LNode.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Server/LNode.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/LNode.cpp" -o CMakeFiles/Server.dir/Server/LNode.cpp.s
 
-CMakeFiles/Server.dir/Server/Gcollector.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Server/Gcollector.cpp.o: ../Server/Gcollector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Server.dir/Server/Gcollector.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Server/Gcollector.cpp.o -c "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Gcollector.cpp"
-
-CMakeFiles/Server.dir/Server/Gcollector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Server/Gcollector.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Gcollector.cpp" > CMakeFiles/Server.dir/Server/Gcollector.cpp.i
-
-CMakeFiles/Server.dir/Server/Gcollector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Server/Gcollector.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Gcollector.cpp" -o CMakeFiles/Server.dir/Server/Gcollector.cpp.s
-
 CMakeFiles/Server.dir/Server/Scope.cpp.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/Server/Scope.cpp.o: ../Server/Scope.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Server.dir/Server/Scope.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Server.dir/Server/Scope.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Server/Scope.cpp.o -c "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Scope.cpp"
 
 CMakeFiles/Server.dir/Server/Scope.cpp.i: cmake_force
@@ -180,6 +167,19 @@ CMakeFiles/Server.dir/Server/Scope.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Server/Scope.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Scope.cpp" -o CMakeFiles/Server.dir/Server/Scope.cpp.s
 
+CMakeFiles/Server.dir/Server/Gcollector.cpp.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/Server/Gcollector.cpp.o: ../Server/Gcollector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Server.dir/Server/Gcollector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Server/Gcollector.cpp.o -c "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Gcollector.cpp"
+
+CMakeFiles/Server.dir/Server/Gcollector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Server/Gcollector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Gcollector.cpp" > CMakeFiles/Server.dir/Server/Gcollector.cpp.i
+
+CMakeFiles/Server.dir/Server/Gcollector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Server/Gcollector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/Server/Gcollector.cpp" -o CMakeFiles/Server.dir/Server/Gcollector.cpp.s
+
 # Object files for target Server
 Server_OBJECTS = \
 "CMakeFiles/Server.dir/Server_autogen/mocs_compilation.cpp.o" \
@@ -188,8 +188,8 @@ Server_OBJECTS = \
 "CMakeFiles/Server.dir/Server/Llist.cpp.o" \
 "CMakeFiles/Server.dir/Server/MemoryController.cpp.o" \
 "CMakeFiles/Server.dir/Server/LNode.cpp.o" \
-"CMakeFiles/Server.dir/Server/Gcollector.cpp.o" \
-"CMakeFiles/Server.dir/Server/Scope.cpp.o"
+"CMakeFiles/Server.dir/Server/Scope.cpp.o" \
+"CMakeFiles/Server.dir/Server/Gcollector.cpp.o"
 
 # External object files for target Server
 Server_EXTERNAL_OBJECTS =
@@ -200,8 +200,8 @@ bin/Server: CMakeFiles/Server.dir/Server/Parser.cpp.o
 bin/Server: CMakeFiles/Server.dir/Server/Llist.cpp.o
 bin/Server: CMakeFiles/Server.dir/Server/MemoryController.cpp.o
 bin/Server: CMakeFiles/Server.dir/Server/LNode.cpp.o
-bin/Server: CMakeFiles/Server.dir/Server/Gcollector.cpp.o
 bin/Server: CMakeFiles/Server.dir/Server/Scope.cpp.o
+bin/Server: CMakeFiles/Server.dir/Server/Gcollector.cpp.o
 bin/Server: CMakeFiles/Server.dir/build.make
 bin/Server: CMakeFiles/Server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/diegoubuntu/Documentos/Universidad/Datos II/Proyectos/Proyecto-I_DII_C-/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable bin/Server"

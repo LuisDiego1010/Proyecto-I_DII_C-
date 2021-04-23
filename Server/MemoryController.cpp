@@ -5,6 +5,14 @@
 #include <iostream>
 #include "MemoryController.h"
 #include "Gcollector.h"
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/sources/logger.hpp>
+#include <boost/log/core.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/global_logger_storage.hpp>
+
 MemoryController *MemoryController:: self;
 
 
@@ -27,6 +35,7 @@ MemoryController::MemoryController() {
 }
 
 void MemoryController::new_scope() {
+    BOOST_LOG_TRIVIAL(info) << "Creating new scope";
     cout<<"new scope"<<endl;
     auto * scope=new Scope();
     testing_scope();
@@ -36,6 +45,7 @@ void MemoryController::new_scope() {
 }
 
 void MemoryController::define_ints(const string& id) {
+    BOOST_LOG_TRIVIAL(info) << "Creating an int";
     auto * node= new LNode("tag");
     node->setId(id);
     node->setValue((void*)new string("int"));
@@ -50,6 +60,7 @@ void MemoryController::define_ints(const string& id) {
 }
 
 void MemoryController::define_chars(const string& id) {
+    BOOST_LOG_TRIVIAL(info) << "Creating a string";
     auto * node= new LNode("tag");
     node->setId(id);
     node->setValue((void *) new string("char"));
@@ -64,6 +75,7 @@ void MemoryController::define_chars(const string& id) {
 }
 
 void MemoryController::define_floats(string tag) {
+    BOOST_LOG_TRIVIAL(info) << "Creating an floats";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("float"));
@@ -85,6 +97,7 @@ void MemoryController::define_structs(string tag) {
 }
 
 void MemoryController::define_references(string tag) {
+    BOOST_LOG_TRIVIAL(info) << "Creating a reference";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("reference"));
@@ -100,6 +113,7 @@ void MemoryController::define_references(string tag) {
 }
 
 void MemoryController::define_longs(string tag) {
+    BOOST_LOG_TRIVIAL(info) << "Creating a long";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("long"));
@@ -114,6 +128,7 @@ void MemoryController::define_longs(string tag) {
 }
 
 void MemoryController::define_doubles(string tag) {
+    BOOST_LOG_TRIVIAL(info) << "Creating a doubles";
     auto * node= new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("double"));
