@@ -21,23 +21,23 @@ class MemoryController {
     /**
      * Start of the memory block
      */
-    void *ptr_start{};
+    void *ptr_start;
     /**
      * End of  the memory block
      */
-    void *ptr_End{};
+    void *ptr_End;
     /**
      * ptr in the actual free to use scope
      */
-    void *ptr_actual{};
+    void *ptr_actual;
     /**
      * Scope to do a delete and delete all
      */
-    Scope *Main_Scope{};
+    Scope *Main_Scope;
     /**
      * Scope to work
      */
-    Scope *Actual_Scope{};
+    Scope *Actual_Scope;
 public:
     void *getPtrActual() const;
 
@@ -92,6 +92,8 @@ public:
     void testing_scope();
 
     void increment_ptr(size_t);
+
+    Scope *getMainScope() const;
 
     /**
      * \brief search for a Variable in the availables scopes

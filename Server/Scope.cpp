@@ -124,5 +124,20 @@ Llist *Scope::getDoubles() const {
     return doubles;
 }
 
+string Scope::GetJson() {
+    string JS;
+    JS=JS+ints->LJson();
+    JS=JS+doubles->LJson();
+    JS=JS+floats->LJson();
+    JS=JS+chars->LJson();
+    JS=JS+structs->LJson();
+    JS=JS+references->LJson();
+    JS=JS+longs->LJson();
+    if(getNextScope()== nullptr){
+        return JS;
+    }
+    return JS+getNextScope()->GetJson();
+}
+
 
 

@@ -32,8 +32,8 @@ void MainWindow::on_runbtn_clicked()
     //Mandar_todo
 
 
-    //QJsonDocument server_info= Socket.Comunicatte(Parser.qt_json(listcode[0]));
-    //std::cout<<"msg from server:"<<server_info.object().value("logger").toString().toUtf8().constData();
-    //ui->terminal->setText(server_info.object().value("logger").toString());
+    QJsonDocument server_info= Socket.Comunicatte(Parser.qt_json(listcode[0]));
+    std::cout<<"msg from server:"<<server_info.object().value("logger").toString().toUtf8().constData();
+    ui->terminal->setText(server_info.object().value("logger").toString());
 
 }

@@ -53,42 +53,51 @@ int main(){
     test();
     cout<<"test runned"<<endl;
     const endpoint_t endpoint ="tcp://*:4040";
-//    // initialize the 0MQ context
-//    zmqpp::context context;
-//
-//    // generate a reply socket
-//    zmqpp::socket_type type = zmqpp::socket_type::reply;
-//    socket Socket= socket (context, type);
-//
-//    // bind to the socket
-//    Socket.bind(endpoint);
-//
-//    std::string msg="b";
-//    std::cout<<msg;
-//    bool a=true;
-//    BOOST_LOG_TRIVIAL(info) << "Waiting for data";
-//    while(a){
-//        std::string Request;
-//        Socket.receive(Request);
-//        std::cout<<"hello";
-//        std::cout<<Request<<"hello";
-////        call to things
-//        BOOST_LOG_TRIVIAL(info) << "Send data";
-//        message_t reply;
-////        reply.copy(msg.data());
-//        Socket.send(R"({"memory":"hola","logger":"error", "out":"bye"})");
-//
-//        if (msg.empty()) {
-//            return 0;
-//
-//        }
-//        a= false;
-//    }
+    // initialize the 0MQ context
+    zmqpp::context context;
 
+    // generate a reply socket
+    zmqpp::socket_type type = zmqpp::socket_type::reply;
+    socket Socket= socket (context, type);
+
+    // bind to the socket
+    Socket.bind(endpoint);
+
+    std::string msg="b";
+    std::cout<<msg;
+    Parser * parsing=new Parser();
+
+    bool a=true;
+    BOOST_LOG_TRIVIAL(info) << "Waiting for data";
+    while(a){
+        std::string Request;
+        Socket.receive(Request);
+        std::cout<<"recieved data";
+        std::cout<<Request<<"=data";
+//        call to things
+        BOOST_LOG_TRIVIAL(info) << "Send data";
+        message_t reply;
+//        reply.copy(msg.data());
+        parsing->Extract_instruction(Request);
+        Request= parsing->Generate_Json();
+        cout<< Request;
+        Socket.send(Request);
+
+        if (msg.empty()) {
+            return 0;
+
+        }
+    }
 }
 void test(){
-    auto * parser= new Parser;
-    string a=R"({"type":"assign","logger":"error","left":"hello im̀ left", "rigth":"hello im̀ right"})";
+    auto * parser= new Parser();
+    string a;
+    string b;
+    a = R"({"type":"assign","left":"int a","rigth":"15"})";
+    b = R"({"type":"assign","left":"int b","rigth":"10"})";
     parser->Extract_instruction(a);
+    cout<< parser->Generate_Json();
+    parser->Extract_instruction(b);
+    cout<< parser->Generate_Json();
     BOOST_LOG_TRIVIAL(info) << "The parser is extracting the instructions";
 }

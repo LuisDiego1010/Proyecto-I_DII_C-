@@ -46,6 +46,8 @@ public:
 
     void setTypeString(const string &typeString);
 
+    string getJson();
+
     void* operator new(std::size_t);
     void operator delete(void*);
 };

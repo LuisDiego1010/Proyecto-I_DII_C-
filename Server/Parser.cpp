@@ -3,7 +3,6 @@
 //
 
 #include "Parser.h"
-#include "Parser_aux.cpp"
 #include "iostream"
 #include "MemoryController.h"
 #include <nlohmann/json.hpp>
@@ -30,8 +29,9 @@ void Parser::Extract_instruction(const string &instruction) {
             string value = Json["rigth"];
             Assign(variable, value);
         } else if (Json["type"] == "declaration") {
-
-
+            string type = Json["left"];
+            string tag = Json["rigth"];
+            Define(tag, type);
         }
     } else {
         cout << right << " Error in the json" << endl;
@@ -80,6 +80,7 @@ void Parser::Assign(const string &variable, string value) {
         string type = variable.substr(0, space);
         string tag = variable.substr(space, string::npos);
         search = Define(tag, type);
+        type_string=search->getTypeString();
     }
 
     auto operation_value = Instruction_Aux(value);
@@ -119,7 +120,7 @@ LNode *Parser::Define(const string& tag, const string& type) {
         returner = Controller->define_longs(tag);
     } else if (type == "double") {
         returner = Controller->define_doubles(tag);
-    } else {
+    } else if(type=="scope"){
         Controller->new_scope();
     }
     if (returner == nullptr) {
@@ -129,8 +130,13 @@ LNode *Parser::Define(const string& tag, const string& type) {
 }
 
 Parser::Parser() {
+    if(Controller!= nullptr){
+        return;
+    }
     Controller = new MemoryController;
-    get_Parser();
+    if (self == nullptr) {
+        self = this;
+    }
 }
 
 LNode *Parser::Aux_Assign(const string& variable) {
@@ -493,4 +499,14 @@ string Parser::Instruction_Aux(string instruction) {
 
     return instruction;
 
+}
+
+string Parser::Generate_Json() {
+    string JS;
+    nlohmann::json Json;
+    JS=Controller->getMainScope()->GetJson();
+    Json["Memory"]=JS;
+    Json["out"]="";
+    Json["logger"]="";
+    return to_string(Json);
 }

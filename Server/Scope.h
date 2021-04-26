@@ -79,6 +79,8 @@ public:
      * @return the scope where the variable is saved. Or nullptr if no founded.
      */
     Scope * Search(const string&);
+
+    string GetJson();
 };
 
 

@@ -29,6 +29,7 @@ void MemoryController::operator delete(void *a) {
 }
 
 MemoryController::MemoryController() {
+    if(ptr_actual!= nullptr){return;}
     MemoryController::ptr_start = ::operator new(100 * 1024 * sizeof(char));
     MemoryController::ptr_End = (char *) ptr_start + 100 * 1024 - 1;
     MemoryController::ptr_actual = ptr_start;
@@ -50,14 +51,14 @@ LNode *MemoryController::define_ints(const string &id) {
     testing_scope();
     if (Actual_Scope->Search(id) != nullptr) { return nullptr; }
     BOOST_LOG_TRIVIAL(info) << "Creating a  type int";
-    auto *node = new LNode("tag");
+    auto *node = ::new LNode("tag");
     node->setId(id);
     node->setValue((void *) new string("int"));
     Actual_Scope->getId()->setFirst(node);
+
     Gcollector *Garbage = new Gcollector;
     auto *node2 = Garbage->getInts(); //pedirselo al garbage
     node2->setId(id);
-    node2->setValue(ptr_actual);
     Actual_Scope->getInts()->setFirst(node2);
     return node2;
 }
@@ -188,6 +189,10 @@ LNode * MemoryController::search(string tag) {
     }
     if (founded== nullptr){return nullptr;}
     return founded;
+}
+
+Scope *MemoryController::getMainScope() const {
+    return Main_Scope;
 };
 
 

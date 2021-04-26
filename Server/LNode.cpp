@@ -93,5 +93,38 @@ void LNode::setTypeString(const string &typeString) {
     type_string = typeString;
 }
 
+string LNode::getJson() {
+    string JS;
+    JS=JS+type_string;
+    JS=JS+id+" ";
+    if (type_string == "int") {
+        int * Jsvalue= (int*) getValue();
+        JS=JS+std::to_string(*Jsvalue);
+    } else if (type_string == "char") {
+        char * Jsvalue= (char*) getValue();
+        JS=JS+std::to_string(*Jsvalue);
+    } else if (type_string == "float") {
+        float * Jsvalue= (float*) getValue();
+        JS=JS+std::to_string(*Jsvalue);
+    } else if (type_string == "struct") {
+        Scope * Jsvalue= (Scope*) getValue();
+        JS=JS+"\n"+Jsvalue->GetJson();
+    } else if (type_string == "reference") {
+        LNode * Jsvalue= (LNode*) getValue();
+        JS=JS+Jsvalue->id;
+    } else if (type_string == "long") {
+        long * Jsvalue= (long*) getValue();
+        JS=JS+std::to_string(*Jsvalue);
+    } else if (type_string == "double") {
+        double * Jsvalue= (double*) getValue();
+        JS=JS+std::to_string(*Jsvalue);
+    }
+    JS= JS+" "+std::to_string(references);
+    if(next== nullptr){
+        return JS+"\n";
+    }
+    return JS+"\n"+next->getJson();
+}
+
 
 

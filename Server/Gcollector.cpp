@@ -32,6 +32,7 @@ void Gcollector::operator delete(void * a) {
 }
 
 Gcollector::Gcollector() {
+    if(ints!= nullptr & chars!= nullptr){return;}
     Gcollector ::  ints=new Llist;
     Gcollector ::  longs= new Llist;
     Gcollector ::  chars= new Llist;
@@ -44,7 +45,7 @@ Gcollector::Gcollector() {
 LNode *Gcollector::getInts() const {
     BOOST_LOG_TRIVIAL(info) << "Reusing the int data position";
     if(ints->getFirst()== nullptr){
-        return new LNode("int");
+        return ::new LNode("int");
     }else{
         LNode* tmp;
         tmp=ints->getFirst();

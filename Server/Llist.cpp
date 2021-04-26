@@ -25,12 +25,12 @@ LNode *Llist::getFirst() const {
  * \brief place a LNode in the first position
  * @param first
  */
-void Llist::setFirst(LNode *first) {
+void Llist::setFirst(LNode *toadd) {
     if (First != nullptr) {
-        first->setNext(First);
-        First = first;
+        toadd->setNext(First);
+        First = toadd;
     } else {
-        First = first;
+        First = toadd;
     }
 }
 
@@ -52,4 +52,14 @@ LNode *Llist::getNode(string tag) {
         }
         actual = actual->getNext();
     }
+    return actual;
+}
+
+string Llist::LJson() {
+    string JS;
+    if (First== nullptr){
+        return JS;
+    }
+    JS= First->getJson();
+    return JS;
 }

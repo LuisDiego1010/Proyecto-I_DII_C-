@@ -57,7 +57,10 @@ public:
      * @param instruction
      */
     string Instruction_Aux(string instruction);
-
+    /**
+     *Generate  the Json from the memory view, logger and the out
+     */
+    string Generate_Json();
 };
 
 

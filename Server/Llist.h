@@ -20,6 +20,8 @@ public:
     string search(const string &id);
 
     LNode *getNode(string);
+
+    string LJson();
 };
 
 
