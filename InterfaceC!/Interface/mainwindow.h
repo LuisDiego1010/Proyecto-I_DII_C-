@@ -21,6 +21,8 @@ public:
 private slots:
     void on_runbtn_clicked();
 
+    void on_nextLinebtn_clicked();
+
 private:
     Ui::MainWindow *ui{};
 };

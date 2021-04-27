@@ -32,3 +32,4 @@
 *.app
 /html/
 /latex/
+cmake-build-debug/bin/Client
