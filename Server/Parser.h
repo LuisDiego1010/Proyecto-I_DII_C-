@@ -11,15 +11,20 @@
 #include "MemoryController.h"
 #include <nlohmann/json.hpp>
 
+
 /**
  * @class class that determines what to do with the instruction received by the socket.
  * See class and Extract Instruction.
  */
+
 class Parser {
 private:
 
 public:
     Parser();
+
+    static string logg;
+    static string out;
 
     static Parser *get_Parser();
 

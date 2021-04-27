@@ -8,7 +8,7 @@
 using namespace std;
 
 QStringList listcode;
-
+int count;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -27,17 +27,16 @@ void MainWindow::on_runbtn_clicked()
     QString code2= code;
     listcode = code2.split(QRegExp("[\n]"),QString::SkipEmptyParts);
     QString length = QString::number(listcode.length());
-
+    ::count=0;
 }
 
 void MainWindow::on_nextLinebtn_clicked()
 {
-    int count=0;
-    if (count<=listcode.length()){
-        QJsonDocument server_info= Socket.Comunicatte(Parser.qt_json(listcode[count]));
+    if (::count<=::listcode.length()){
+        QJsonDocument server_info= Socket.Comunicatte(Parser.qt_json(listcode[::count]));
         std::cout<<"msg from server:"<<server_info.object().value("logger").toString().toUtf8().constData();
         ui->terminal->setText(server_info.object().value("logger").toString());
-        count++;
+        ::count++;
     }
 
 }

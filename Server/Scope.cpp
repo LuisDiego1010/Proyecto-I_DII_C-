@@ -3,6 +3,8 @@
 //
 
 #include "Scope.h"
+#include "Gcollector.h"
+#include "MemoryController.h"
 
 #include <utility>
 
@@ -19,6 +21,7 @@ Scope::Scope() {
     Scope::Next_Scope = nullptr;
     Scope::Previous_Scope = nullptr;
 }
+
 /**
  * \brief search for a value tag in the available Scopes
  * @param tag
@@ -126,17 +129,61 @@ Llist *Scope::getDoubles() const {
 
 string Scope::GetJson() {
     string JS;
-    JS=JS+ints->LJson();
-    JS=JS+doubles->LJson();
-    JS=JS+floats->LJson();
-    JS=JS+chars->LJson();
-    JS=JS+structs->LJson();
-    JS=JS+references->LJson();
-    JS=JS+longs->LJson();
-    if(getNextScope()== nullptr){
+    JS = JS + ints->LJson();
+    JS = JS + doubles->LJson();
+    JS = JS + floats->LJson();
+    JS = JS + chars->LJson();
+    JS = JS + structs->LJson();
+    JS = JS + references->LJson();
+    JS = JS + longs->LJson();
+    if (getNextScope() == nullptr) {
         return JS;
     }
-    return JS+getNextScope()->GetJson();
+    return JS + getNextScope()->GetJson();
+}
+
+void Scope::Delete() {
+    auto *collector = new Gcollector;
+    //Code to complete struct creation
+    if (getPreviousScope() != nullptr) {
+        if (getPreviousScope()->getNextScope() == nullptr) {
+            auto *memory = new MemoryController;
+            memory->setActualScope(getPreviousScope());
+            setPreviousScope(nullptr);
+            return;
+        }
+    }
+    //code to send all types in the scope to the garbage
+    while (ints->getFirst() != nullptr) {
+        collector->setInts(ints->getFirst());
+        ints->setFirst(ints->getFirst()->getNext());
+    }
+    while (chars->getFirst() != nullptr) {
+        collector->setChars(chars->getFirst());
+        chars->setFirst(chars->getFirst()->getNext());
+    }
+    while (floats->getFirst() != nullptr) {
+        collector->setFloats(floats->getFirst());
+        floats->setFirst(floats->getFirst()->getNext());
+    }
+    while (doubles->getFirst() != nullptr) {
+        collector->setDoubles(doubles->getFirst());
+        doubles->setFirst(doubles->getFirst()->getNext());
+    }
+    while (longs->getFirst() != nullptr) {
+        collector->setLongs(longs->getFirst());
+        longs->setFirst(longs->getFirst()->getNext());
+    }
+    while (references->getFirst() != nullptr) {
+        collector->setReferences(references->getFirst());
+        references->setFirst(references->getFirst()->getNext());
+    }
+    while (structs->getFirst() != nullptr) {
+        Scope *tmp = (Scope *) structs->getFirst()->getValue();
+        references->setFirst(references->getFirst()->getNext());
+        tmp->Delete();
+    }
+
 }
 
 

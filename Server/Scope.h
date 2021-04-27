@@ -79,8 +79,15 @@ public:
      * @return the scope where the variable is saved. Or nullptr if no founded.
      */
     Scope * Search(const string&);
-
+    /**
+     * \brief Create a string with the info of the Scope
+     * @return
+     */
     string GetJson();
+    /**
+     * Delete the scope and send elemento to reutilize.
+     */
+    void Delete();
 };
 
 

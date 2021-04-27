@@ -101,7 +101,14 @@ public:
      * @return the LNode that containt the variable direction, nullptr if not found
      */
     LNode *search(string);
+    /**
+     * \brief Close the actual escope
+     */
+    void Unscope();
 
+    Scope *getActualScope() const;
+
+    void setActualScope(Scope *actualScope);
 };
 
 

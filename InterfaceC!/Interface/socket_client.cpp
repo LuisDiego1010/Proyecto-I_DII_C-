@@ -16,12 +16,12 @@ QJsonDocument Socket_Client::Comunicatte(std::string msg) {
     QJsonDocument Json;
     std::string Request;
     socket->send(msg);
-    std::cout<<"yes1"<<std::endl;
+    std::cout<<"sended"<<std::endl;
     std::cout<<Request<<std::endl;
     socket->receive(Request);
     std::cout<<Request<<std::endl;
     Qjsonstring= QString::fromStdString(Request);
-    std::cout<<"yes2";
+    std::cout<<"recieved";
     std::cout<<Request;
     Json=QJsonDocument::fromJson(Qjsonstring.toUtf8());
     return Json;

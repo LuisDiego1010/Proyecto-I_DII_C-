@@ -9,11 +9,16 @@
 
 using namespace std;
 
+string Parser::logg;
+string Parser::out;
+
+
 Parser *Parser::self;
 
 Parser *Parser::get_Parser() {
     if (self == nullptr) {
         self = new Parser;
+
     }
     return self;
 }
@@ -44,19 +49,27 @@ void Parser::Assign(const string &variable, string value) {
     cout << value << " =value" << endl;
     size_t space;
     size_t dot;
-
     space = variable.find(' ');
     dot = variable.find('.');
     LNode *search;
     string type_string;
 
     // detect if the code variable is a declaration, structure.propierty or a variable.
-    if (space == std::string::npos & dot == std::string::npos) {
-        search = Controller->search(variable);
+    if ((space == std::string::npos || space <= 2) && dot == std::string::npos) {
+        search = Controller->search(" "+variable);
+        if (search == nullptr) {
+            cout << "not founded variable" << variable;
+            return;
+        }
+        type_string = search->getTypeString();
     } else if (space == std::string::npos) {
         //Do structure things
         string structure = variable.substr(0, dot);
         search = Controller->search(structure);
+        if (search == nullptr) {
+            cout << "not founded variable" << variable;
+            return;
+        }
         string propierti = variable.substr(dot, string::npos);
         auto *ptr = static_cast<Scope *>(search->getValue());
         ptr->Search(propierti);
@@ -76,11 +89,20 @@ void Parser::Assign(const string &variable, string value) {
         } else if (type == "double") {
             search = ptr->getDoubles()->getNode(propierti);
         }
+        if (search == nullptr) {
+            cout << "the dfinition o fthe assign can not be processed" << structure << propierti;
+            return;
+        }
+        type_string = search->getTypeString();
     } else {
         string type = variable.substr(0, space);
         string tag = variable.substr(space, string::npos);
         search = Define(tag, type);
-        type_string=search->getTypeString();
+        if (search == nullptr) {
+            cout << "the dfinition o fthe assign can not be processed" << type << tag;
+            return;
+        }
+        type_string = search->getTypeString();
     }
 
     auto operation_value = Instruction_Aux(value);
@@ -102,7 +124,7 @@ void Parser::Assign(const string &variable, string value) {
     }
 }
 
-LNode *Parser::Define(const string& tag, const string& type) {
+LNode *Parser::Define(const string &tag, const string &type) {
     cout << type << " =type" << endl;
     cout << tag << " =tag" << endl;
     LNode *returner = nullptr;
@@ -120,8 +142,10 @@ LNode *Parser::Define(const string& tag, const string& type) {
         returner = Controller->define_longs(tag);
     } else if (type == "double") {
         returner = Controller->define_doubles(tag);
-    } else if(type=="scope"){
+    } else if (type == "scope") {
         Controller->new_scope();
+    } else if (type == "unscope") {
+        Controller->Unscope();
     }
     if (returner == nullptr) {
         cout << "error in definiton of variable, overloading tag?" << tag;
@@ -130,16 +154,18 @@ LNode *Parser::Define(const string& tag, const string& type) {
 }
 
 Parser::Parser() {
-    if(Controller!= nullptr){
+    if (Controller != nullptr) {
         return;
     }
     Controller = new MemoryController;
+
     if (self == nullptr) {
         self = this;
+
     }
 }
 
-LNode *Parser::Aux_Assign(const string& variable) {
+LNode *Parser::Aux_Assign(const string &variable) {
     size_t space;
     size_t dot;
     dot = variable.find('.');
@@ -149,10 +175,15 @@ LNode *Parser::Aux_Assign(const string& variable) {
     // detect if the code variable is a structure.propierty or a variable.
     if (dot == std::string::npos) {
         search = Controller->search(variable);
+        if (search == nullptr) {
+            cout << "not founded variable" << variable;
+            return search;
+        }
     } else {
         //Do structure things
         string structure = variable.substr(0, dot);
         search = Controller->search(structure);
+        if (search == nullptr) { return nullptr; }
         string propierti = variable.substr(dot, string::npos);
         auto *ptr = static_cast<Scope *>(search->getValue());
         ptr->Search(propierti);
@@ -175,6 +206,7 @@ LNode *Parser::Aux_Assign(const string& variable) {
     }
     return search;
 }
+
 string Parser::Instruction_Aux(string instruction) {
     string result;
     size_t rest;
@@ -403,10 +435,10 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     rigth = *(double *) second->getValue();
                 }
-                try{
+                try {
                     float value = left_side / rigth;
                     return std::to_string(value);
-                }catch (exception &e) {
+                } catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "/"
                          << instruction.substr(divide, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
@@ -504,9 +536,9 @@ string Parser::Instruction_Aux(string instruction) {
 string Parser::Generate_Json() {
     string JS;
     nlohmann::json Json;
-    JS=Controller->getMainScope()->GetJson();
-    Json["Memory"]=JS;
-    Json["out"]="";
-    Json["logger"]="";
+    JS = Controller->getMainScope()->GetJson();
+    Json["Memory"] = JS;
+    Json["out"] = "";
+    Json["logger"] = logg;
     return to_string(Json);
 }
