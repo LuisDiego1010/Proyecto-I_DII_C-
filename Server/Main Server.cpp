@@ -9,38 +9,11 @@
 #include <zmqpp/message.hpp>
 #include "Llist.h"
 #include "Parser.h"
-#include <boost/log/trivial.hpp>
-#include <boost/log/utility/setup/file.hpp>
-#include <boost/log/expressions.hpp>
-#include <boost/log/sources/logger.hpp>
-#include <boost/log/core.hpp>
-#include <boost/log/utility/setup/common_attributes.hpp>
-#include <boost/log/sources/global_logger_storage.hpp>
 
 using namespace zmqpp;
-namespace attrs = boost::log::attributes;
-namespace src = boost::log::sources;
-namespace sinks = boost::log::sinks;
-namespace expr = boost::log::expressions;
-namespace logging = boost::log;
-namespace keywords = boost::log::keywords;
-namespace src=boost::log::sources;
 
-BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT (loggerC,src::logger_mt);
 
 void test();
-
-
-void init_loggin(){
-    logging::register_simple_formatter_factory<logging::trivial::severity_level, char>("Severity");
-    logging::add_file_log(
-            keywords::file_name="registerC!",
-            keywords::format = "[%TimeStamp%]  [%Severity%] %Message% [%ThreadID%]"
-            );
-    logging::core::get()->set_filter(
-    logging::trivial::severity >= logging::trivial::info);
-    logging::add_common_attributes();
-}
 
 /**
  * \brief Main of the server recieve from a Reply socket, do thing that are in the string and reply a json whit the actual state.
@@ -48,7 +21,6 @@ void init_loggin(){
  * @return
  */
 int main(){
-    loggerC::get();
     cout<<"init"<<endl;
     test();
     cout<<"test runned"<<endl;
