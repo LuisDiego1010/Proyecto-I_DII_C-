@@ -9,6 +9,8 @@
 #include <zmqpp/message.hpp>
 #include "Llist.h"
 #include "Parser.h"
+#include "loggerS.h"
+
 
 using namespace zmqpp;
 
@@ -40,14 +42,14 @@ int main(){
     Parser * parsing=new Parser();
 
     bool a=true;
-    BOOST_LOG_TRIVIAL(info) << "Waiting for data";
+    LOG_INFO<< "Waiting for data";
     while(a){
         std::string Request;
         Socket.receive(Request);
         std::cout<<"recieved data";
         std::cout<<Request<<"=data";
 //        call to things
-        BOOST_LOG_TRIVIAL(info) << "Send data";
+        LOG_INFO<< "Send data";
         message_t reply;
 //        reply.copy(msg.data());
         parsing->Extract_instruction(Request);
@@ -71,5 +73,5 @@ void test(){
     cout<< parser->Generate_Json();
     parser->Extract_instruction(b);
     cout<< parser->Generate_Json();
-    BOOST_LOG_TRIVIAL(info) << "The parser is extracting the instructions";
+    LOG_INFO<< "The parser is extracting the instructions";
 }
