@@ -26,7 +26,6 @@ void *Gcollector::operator new(std::size_t) {
     garbarge= :: new Gcollector;
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Request to GarbageCollector\n";
-    BOOST_LOG_TRIVIAL(info) << "Request to GarbageCollector";
     }
     return garbarge;
 }
@@ -49,7 +48,6 @@ Gcollector::Gcollector() {
 LNode *Gcollector::getInts() const {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Reusing the int data position\n";
-    BOOST_LOG_TRIVIAL(info) << "Reusing the int data position";
     if(ints->getFirst()== nullptr){
         return ::new LNode("int");
     }else{
@@ -64,7 +62,6 @@ LNode *Gcollector::getInts() const {
 void Gcollector::setInts(LNode *int_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The int data was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The int data was deleted and is in the Collector";
     if(ints->getFirst()== nullptr){
         ints->setFirst(int_node);
     }else{
@@ -76,7 +73,6 @@ void Gcollector::setInts(LNode *int_node) {
 LNode *Gcollector::getChars() const {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Reusing the char data position\n";
-    BOOST_LOG_TRIVIAL(info) << "Reusing the char data position";
     if(chars->getFirst()== nullptr){
         return ::new LNode("char");
     }else{
@@ -90,7 +86,6 @@ LNode *Gcollector::getChars() const {
 void Gcollector::setChars(LNode *char_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The char data was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The char data was deleted and is in the Collector";
     if(chars->getFirst()== nullptr){
         chars->setFirst(char_node);
     }else{
@@ -102,7 +97,6 @@ void Gcollector::setChars(LNode *char_node) {
 LNode *Gcollector::getFloats() const {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Reusing the float data position\n";
-    BOOST_LOG_TRIVIAL(info) << "Reusing the float data position";
     if(floats->getFirst()== nullptr){
         return ::new LNode("float");
     }else{
@@ -116,7 +110,6 @@ LNode *Gcollector::getFloats() const {
 void Gcollector::setFloats(LNode *float_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The float data was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The float data was deleted and is in the Collector";
     if(floats->getFirst()== nullptr){
         floats->setFirst(float_node);
     }else{
@@ -142,7 +135,6 @@ LNode *Gcollector::getStructs() const {
 void Gcollector::setStructs(LNode *struct_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The struct was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The struct was deleted and is in the Collector";
     if(structs->getFirst()== nullptr){
         structs->setFirst(struct_node);
     }else{
@@ -154,7 +146,6 @@ void Gcollector::setStructs(LNode *struct_node) {
 LNode *Gcollector::getReferences() const {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Reusing the reference position\n";
-    BOOST_LOG_TRIVIAL(info) << "Reusing the reference position";
     if(references->getFirst()== nullptr){
         return ::new LNode("reference");
     }else{
@@ -168,7 +159,6 @@ LNode *Gcollector::getReferences() const {
 void Gcollector::setReferences(LNode *reference_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The reference data was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The reference data was deleted and is in the Collector";
     if(references->getFirst()== nullptr){
         references->setFirst(reference_node);
     }else{
@@ -180,7 +170,6 @@ void Gcollector::setReferences(LNode *reference_node) {
 LNode *Gcollector::getLongs() const {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Reusing the long data position\n";
-    BOOST_LOG_TRIVIAL(info) << "Reusing the long data position";
     if(longs->getFirst()== nullptr){
         return ::new LNode("long");
     }else{
@@ -194,7 +183,6 @@ LNode *Gcollector::getLongs() const {
 void Gcollector::setLongs(LNode *long_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The longs data was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The longs data was deleted and is in the Collector";
     if(longs->getFirst()== nullptr){
         longs->setFirst(long_node);
     }else{
@@ -206,7 +194,6 @@ void Gcollector::setLongs(LNode *long_node) {
 LNode *Gcollector::getDoubles() const {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Reusing the double data position\n";
-    BOOST_LOG_TRIVIAL(info) << "Reusing the double data position";
     if(doubles->getFirst()== nullptr){
         return ::new LNode("double");
     }else{
@@ -220,7 +207,6 @@ LNode *Gcollector::getDoubles() const {
 void Gcollector::setDoubles(LNode *double_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The doubles data was deleted and is in the Collector\n";
-    BOOST_LOG_TRIVIAL(info) << "The doubles data was deleted and is in the Collector";
     if(doubles->getFirst()== nullptr){
         doubles->setFirst(double_node);
     }else{

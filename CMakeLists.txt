@@ -36,8 +36,7 @@ add_executable(Server
         Server/Scope.h
         Server/Gcollector.cpp
         Server/Gcollector.h
-        Server/loggerS.cpp
-        Server/loggerS.h)
+        )
 
 target_link_libraries(Server ${CONAN_LIBS})
 
@@ -50,12 +49,7 @@ add_executable(Client
         InterfaceC!/Interface/mainwindow.ui
         InterfaceC!/Interface/socket_client.cpp
         InterfaceC!/Interface/socket_client.h
-        LoggerC/logger.cpp
-        LoggerC/logger.h
-        Client/loggerC.cpp
-        Client/loggerC.h
-        InterfaceC!/Interface/loggerI.cpp
-        InterfaceC!/Interface/loggerI.h)
+)
 
 
 target_link_libraries(Client ${CONAN_LIBS})

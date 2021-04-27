@@ -80,7 +80,6 @@ int main() {
 //        call to things
         Parser::logg +=
                 "started server at: [" + to_simple_string(boost::posix_time::second_clock::local_time()) + "]\n";
-        BOOST_LOG_TRIVIAL(info) << "Send data";
         message_t reply;
 //        reply.copy(msg.data());
         parsing->Extract_instruction(Request);
@@ -110,5 +109,6 @@ void test() {
     cout << parser->Generate_Json();
     parser->Extract_instruction(a2);
     cout << parser->Generate_Json();
-    BOOST_LOG_TRIVIAL(info) << "The parser is extracting the instructions";
+    Parser::logg +=
+            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The parser is extracting the instructions\n";
 }
