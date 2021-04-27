@@ -17,6 +17,8 @@
 #include <boost/date_time.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/sources/global_logger_storage.hpp>
+#include "loggerS.h"
+
 
 using namespace zmqpp;
 namespace attrs = boost::log::attributes;

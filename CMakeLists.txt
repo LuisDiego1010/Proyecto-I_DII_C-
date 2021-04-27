@@ -22,8 +22,6 @@ get_target_property(QtCore_location Qt5::Core LOCATION)
 
 find_package(Boost 1.71.0 COMPONENTS system filesystem REQUIRED)
 
-
-
 add_executable(Server
         "Server/Main Server.cpp"
         Server/Parser.cpp
@@ -37,8 +35,12 @@ add_executable(Server
         Server/Scope.cpp
         Server/Scope.h
         Server/Gcollector.cpp
-        Server/Gcollector.h)
+        Server/Gcollector.h
+        Server/loggerS.cpp
+        Server/loggerS.h)
+
 target_link_libraries(Server ${CONAN_LIBS})
+
 add_executable(Client
         "InterfaceC!/Interface/main.cpp"
         InterfaceC!/Interface/mainwindow.cpp
@@ -48,7 +50,12 @@ add_executable(Client
         InterfaceC!/Interface/mainwindow.ui
         InterfaceC!/Interface/socket_client.cpp
         InterfaceC!/Interface/socket_client.h
-        )
+        LoggerC/logger.cpp
+        LoggerC/logger.h
+        Client/loggerC.cpp
+        Client/loggerC.h
+        InterfaceC!/Interface/loggerI.cpp
+        InterfaceC!/Interface/loggerI.h)
 
 
 target_link_libraries(Client ${CONAN_LIBS})
