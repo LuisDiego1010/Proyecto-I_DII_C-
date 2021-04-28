@@ -72,7 +72,8 @@ void Parser::Assign(const string &variable, string value) {
             return;
         }
         type_string = search->getTypeString();
-    } else if (space == std::string::npos) {
+    } else
+        if (space == std::string::npos) {
         //Do structure things
         string structure = variable.substr(0, dot);
         search = Controller->search(structure);
@@ -81,7 +82,7 @@ void Parser::Assign(const string &variable, string value) {
                     "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] \"Error not founded variable\"\n" + variable;
             return;
         }
-        string propierti = variable.substr(dot, string::npos);
+        string propierti = variable.substr(dot+1, string::npos);
         auto *ptr = static_cast<Scope *>(search->getValue());
         ptr->Search(propierti);
         string type = ptr->getType();
@@ -237,14 +238,15 @@ string Parser::Instruction_Aux(string instruction) {
     try {
         if (sum != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, sum));
-            LNode *second = Aux_Assign(instruction.substr(sum, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(sum+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, sum)) + stof(instruction.substr(sum, string::npos));
+                    float value = stof(instruction.substr(0, sum)) + stof(instruction.substr(sum+1, string::npos));
+                    return std::to_string(value);
                 }
                 catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, sum) << "+"
-                         << instruction.substr(sum, string::npos) << endl;
+                         << instruction.substr(sum+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
                     Parser::logg +=
                             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -265,7 +267,7 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     left_side = *(double *) first->getValue();
                 }
-                float value = left_side + stof(instruction.substr(sum, string::npos));
+                float value = left_side + stof(instruction.substr(sum+1, string::npos));
                 return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
@@ -305,8 +307,8 @@ string Parser::Instruction_Aux(string instruction) {
         }
     }
     catch (exception &e) {
-        cout << "exception while calculating " << instruction.substr(0, rest) << "+"
-             << instruction.substr(rest, string::npos) << endl;
+        cout << "exception while calculating " << instruction.substr(0, sum) << "+"
+             << instruction.substr(sum+1, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
         Parser::logg +=
                 "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -315,14 +317,15 @@ string Parser::Instruction_Aux(string instruction) {
     try {
         if (rest != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, rest));
-            LNode *second = Aux_Assign(instruction.substr(rest, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(rest+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, rest)) - stof(instruction.substr(rest, string::npos));
+                    float value = stof(instruction.substr(0, rest)) - stof(instruction.substr(rest+1, string::npos));
+                    return std::to_string(value);
                 }
                 catch (exception &e) {
-                    cout << "exception while calculating " << instruction.substr(0, rest) << "+"
-                         << instruction.substr(rest, string::npos) << endl;
+                    cout << "exception while calculating " << instruction.substr(0, rest) << "-"
+                         << instruction.substr(rest+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
                     Parser::logg +=
                             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -343,7 +346,7 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     left_side = *(double *) first->getValue();
                 }
-                float value = left_side - stof(instruction.substr(rest, string::npos));
+                float value = left_side - stof(instruction.substr(rest+1, string::npos));
                 return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
@@ -393,14 +396,15 @@ string Parser::Instruction_Aux(string instruction) {
     try {
         if (divide != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, divide));
-            LNode *second = Aux_Assign(instruction.substr(divide, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(divide+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, divide)) + stof(instruction.substr(divide, string::npos));
+                    float value = stof(instruction.substr(0, divide)) / stof(instruction.substr(divide+1, string::npos));
+                    return std::to_string(value);
                 }
                 catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "+"
-                         << instruction.substr(divide, string::npos) << endl;
+                         << instruction.substr(divide+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
                     Parser::logg +=
                             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -422,11 +426,11 @@ string Parser::Instruction_Aux(string instruction) {
                     left_side = *(double *) first->getValue();
                 }
                 try {
-                    float value = left_side / stof(instruction.substr(sum, string::npos));
+                    float value = left_side / stof(instruction.substr(sum+1, string::npos));
                     return std::to_string(value);
                 } catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "/"
-                         << instruction.substr(divide, string::npos) << endl;
+                         << instruction.substr(divide+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
                     Parser::logg +=
                             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -468,7 +472,7 @@ string Parser::Instruction_Aux(string instruction) {
                     return std::to_string(value);
                 } catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "/"
-                         << instruction.substr(divide, string::npos) << endl;
+                         << instruction.substr(divide+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
                     Parser::logg +=
                             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -480,7 +484,7 @@ string Parser::Instruction_Aux(string instruction) {
     }
     catch (exception &e) {
         cout << "exception while calculating " << instruction.substr(0, rest) << "/"
-             << instruction.substr(rest, string::npos) << endl;
+             << instruction.substr(rest+1, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
         Parser::logg +=
                 "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -489,14 +493,19 @@ string Parser::Instruction_Aux(string instruction) {
     try {
         if (multy != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, multy));
-            LNode *second = Aux_Assign(instruction.substr(multy, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(multy+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, multy)) * stof(instruction.substr(multy, string::npos));
+                    string number1= instruction.substr(0, multy);
+                    string number2=instruction.substr(multy+1, string::npos);
+
+                    float value = stof(number1) * stof(number2);
+                    return std::to_string(value);
+
                 }
                 catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, multy) << "*"
-                         << instruction.substr(multy, string::npos) << endl;
+                         << instruction.substr(multy+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
                     Parser::logg +=
                             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -517,7 +526,7 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     left_side = *(double *) first->getValue();
                 }
-                float value = left_side * stof(instruction.substr(multy, string::npos));
+                float value = left_side * stof(instruction.substr(multy+1, string::npos));
                 return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
@@ -557,8 +566,8 @@ string Parser::Instruction_Aux(string instruction) {
         }
     }
     catch (exception &e) {
-        cout << "exception while calculating " << instruction.substr(0, rest) << "*"
-             << instruction.substr(rest, string::npos) << endl;
+        cout << "exception while calculating " << instruction.substr(0, multy) << "*"
+             << instruction.substr(multy+1, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
         Parser::logg +=
                 "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
@@ -574,7 +583,7 @@ string Parser::Generate_Json() {
     nlohmann::json Json;
     JS = Controller->getMainScope()->GetJson();
     Json["Memory"] = JS;
-    Json["out"] = "";
+    Json["out"] = out;
     Json["logger"] = logg;
     return to_string(Json);
 }

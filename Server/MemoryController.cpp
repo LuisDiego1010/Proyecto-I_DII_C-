@@ -200,6 +200,9 @@ LNode *MemoryController::search(string tag) {
     LNode *founded = nullptr;
     Scope *Scope_search;
     Scope_search = Actual_Scope->Search(tag);
+    if(Scope_search== nullptr){
+        return nullptr;
+    }
     string type = Scope_search->getType();
     if (type == "int") {
         founded = Scope_search->getInts()->getNode(tag);

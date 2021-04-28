@@ -78,7 +78,8 @@ int main() {
             return 0;
 
         }
-        Parser::logg = "";
+        Parser::logg = " ";
+        Parser::out=" ";
     }
 }
 
@@ -87,7 +88,7 @@ void test() {
     string a;
     string a2;
     string b;
-    a = R"({"type":"assign","left":"int a","rigth":"15"})";
+    a = R"({"type":"assign","left":"int a","rigth":"15*11"})";
     a2 = R"({"type":"assign","left":"a","rigth":"16"})";
     b = R"({"type":"assign","left":"int b","rigth":"10"})";
     parser->Extract_instruction(a);
