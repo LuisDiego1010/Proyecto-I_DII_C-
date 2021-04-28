@@ -18,9 +18,17 @@
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/sources/global_logger_storage.hpp>
 
+using namespace zmqpp;
+namespace attrs = boost::log::attributes;
+namespace src = boost::log::sources;
+namespace sinks = boost::log::sinks;
+namespace expr = boost::log::expressions;
+namespace logging = boost::log;
+namespace keywords = boost::log::keywords;
+namespace src = boost::log::sources;
+
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT (loggerC, src::logger_mt);
 
-using namespace zmqpp;
 void test();
 
 /**
@@ -29,6 +37,7 @@ void test();
  * @return
  */
 int main() {
+    loggerC::get();
     cout << "init" << endl;
     test();
     cout << "test runned" << endl;

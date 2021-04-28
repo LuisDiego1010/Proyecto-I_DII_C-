@@ -6,8 +6,14 @@
 #include "iostream"
 #include "MemoryController.h"
 #include <nlohmann/json.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/sources/logger.hpp>
+#include <boost/log/core.hpp>
 #include <boost/date_time.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/global_logger_storage.hpp>
 
 using namespace std;
 

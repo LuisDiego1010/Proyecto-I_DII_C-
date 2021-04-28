@@ -45,6 +45,7 @@ void MemoryController::new_scope() {
     auto *scope = new Scope();
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a scope\n";
+    BOOST_LOG_TRIVIAL(info) << "Creating new scope";
     Actual_Scope->setNextScope(scope);
     scope->setPreviousScope(scope);
     Actual_Scope = scope;
@@ -55,6 +56,7 @@ LNode *MemoryController::define_ints(const string &id) {
     if (Actual_Scope->Search(id) != nullptr) { return nullptr; }
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a int\n";
+    BOOST_LOG_TRIVIAL(info) << "Creating a  type int";
     auto *node = ::new LNode("tag");
     node->setId(id);
     node->setValue((void *) new string("int"));
@@ -70,6 +72,7 @@ LNode *MemoryController::define_ints(const string &id) {
 LNode *MemoryController::define_chars(const string &id) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a string\n";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type string";
     testing_scope();
     if (Actual_Scope->Search(id) != nullptr) { return nullptr; }
     auto *node = ::new LNode("tag");
@@ -88,6 +91,7 @@ LNode *MemoryController::define_floats(string tag) {
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a float\n";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type floats";
     auto *node = ::new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("float"));
@@ -108,6 +112,7 @@ LNode *MemoryController::define_structs(string tag) {
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a struct\n";
+    BOOST_LOG_TRIVIAL(info) << "Define a struct";
     auto *node = ::new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("struct"));
@@ -129,6 +134,8 @@ LNode *MemoryController::define_references(string tag) {
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a reference\n";
+
+    BOOST_LOG_TRIVIAL(info) << "Creating a reference";
     auto *node = ::new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("reference"));
@@ -146,6 +153,7 @@ LNode *MemoryController::define_longs(string tag) {
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a long\n";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type long";
     auto *node = ::new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("long"));
@@ -162,6 +170,7 @@ LNode *MemoryController::define_doubles(string tag) {
     if (Actual_Scope->Search(tag) != nullptr) { return nullptr; }
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a double\n";
+    BOOST_LOG_TRIVIAL(info) << "Creating a type double";
     auto *node = :: new LNode("tag");
     node->setId(tag);
     node->setValue((void *) new string("double"));
