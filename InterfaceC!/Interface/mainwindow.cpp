@@ -29,8 +29,6 @@ void MainWindow::on_runbtn_clicked()
     listcode = code2.split(QRegExp("[\n]"),QString::SkipEmptyParts);
     QString length = QString::number(listcode.length());
     ::count=0;
-    ui->ApplicationLog->append("1");
-    ui->ApplicationLog->append("2");
 }
 
 void MainWindow::on_nextLinebtn_clicked()

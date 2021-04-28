@@ -3,7 +3,7 @@ project(Proyecto_I_DII_C_)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED  ON )
-set(CMAKE_CXX_FLAGS "-fPIC -DBOOST_LOG_DYN_LINK")
+set(CMAKE_CXX_FLAGS -fPIC )
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -39,7 +39,6 @@ add_executable(Server
         )
 
 target_link_libraries(Server ${CONAN_LIBS})
-target_link_libraries(Server ${BOOST_SYSTEM_LIBRARY})
 
 add_executable(Client
         "InterfaceC!/Interface/main.cpp"
