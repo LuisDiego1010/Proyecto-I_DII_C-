@@ -6,7 +6,11 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include "Json_parser.h"
-
+/**
+ * @brief Json_parser used to send the interface information via json
+ * @param a QString that contains the information in string format
+ * @return
+ */
 std::string Json_parser::qt_json(QString a) {
     std::string Json_string;
     std::string line = a.toUtf8().constData();

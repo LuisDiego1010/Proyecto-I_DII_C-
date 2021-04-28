@@ -9,6 +9,7 @@ using namespace std;
 
 QStringList listcode;
 int count;
+QJsonDocument server_info;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -28,11 +29,13 @@ void MainWindow::on_runbtn_clicked()
     listcode = code2.split(QRegExp("[\n]"),QString::SkipEmptyParts);
     QString length = QString::number(listcode.length());
     ::count=0;
+    ui->ApplicationLog->append("1");
+    ui->ApplicationLog->append("2");
 }
 
 void MainWindow::on_nextLinebtn_clicked()
 {
-    QJsonDocument server_info;
+    ui->ApplicationLog->append("Hello");
     if (::count<=::listcode.length()){
         server_info= Socket.Comunicatte(Parser.qt_json(listcode[::count]));
         std::cout<<"msg from server:"<<server_info.object().value("logger").toString().toUtf8().constData();
@@ -46,7 +49,7 @@ void MainWindow::on_nextLinebtn_clicked()
     QString memoryS=memory.toString();
     QString outS=out.toString();
     QString loggerS=logger.toString();
-    ui->ramliveviewer->setText(memoryS);
+    ui->ramliveviewer->append(memoryS);
     ui->tstdout->append(outS);
     ui->ApplicationLog->append(loggerS);
 }

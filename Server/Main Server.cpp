@@ -27,6 +27,7 @@ namespace logging = boost::log;
 namespace keywords = boost::log::keywords;
 namespace src = boost::log::sources;
 
+#define BOOST_LOG_DYN_LINK 1
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT (loggerC, src::logger_mt);
 
 void test();
