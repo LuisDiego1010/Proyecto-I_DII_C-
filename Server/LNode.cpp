@@ -18,7 +18,7 @@ int LNode::getReferences() const {
 }
 
 void LNode::setReferences(int references) {
-    LNode::references = references;
+    LNode::references += references;
 }
 
 void *LNode::getValue() const {
