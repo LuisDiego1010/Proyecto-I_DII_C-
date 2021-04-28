@@ -73,6 +73,7 @@ int main() {
     bool a = true;
     BOOST_LOG_TRIVIAL(info) << "Waiting for data";
     while (a) {
+
         std::string Request;
         Socket.receive(Request);
         std::cout << "recieved data";
