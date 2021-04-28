@@ -85,7 +85,7 @@ public:
      */
     string GetJson();
     /**
-     * Delete the scope and send elemento to reutilize.
+     * Delete the scope and send element to reutilize.
      */
     void Delete();
 };
