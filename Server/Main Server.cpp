@@ -17,33 +17,11 @@
 #include <boost/date_time.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/sources/global_logger_storage.hpp>
-#include "loggerS.h"
-
-
-using namespace zmqpp;
-namespace attrs = boost::log::attributes;
-namespace src = boost::log::sources;
-namespace sinks = boost::log::sinks;
-namespace expr = boost::log::expressions;
-namespace logging = boost::log;
-namespace keywords = boost::log::keywords;
-namespace src = boost::log::sources;
 
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT (loggerC, src::logger_mt);
 
+using namespace zmqpp;
 void test();
-
-
-void init_loggin() {
-    logging::register_simple_formatter_factory<logging::trivial::severity_level, char>("Severity");
-    logging::add_file_log(
-            keywords::auto_flush = true,
-            keywords::file_name = "registerC!",
-            keywords::format = "[%TimeStamp%]  [%Severity%] %Message% [%ThreadID%]"
-    );
-    logging::core::get()->set_filter(
-            logging::trivial::severity >= logging::trivial::info);
-}
 
 /**
  * \brief Main of the server recieve from a Reply socket, do thing that are in the string and reply a json whit the actual state.
@@ -51,7 +29,6 @@ void init_loggin() {
  * @return
  */
 int main() {
-    loggerC::get();
     cout << "init" << endl;
     test();
     cout << "test runned" << endl;
@@ -71,7 +48,8 @@ int main() {
     Parser *parsing = new Parser();
 
     bool a = true;
-    BOOST_LOG_TRIVIAL(info) << "Waiting for data";
+    Parser::logg +=
+            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Waiting for data\n";
     while (a) {
         std::string Request;
         Socket.receive(Request);

@@ -102,7 +102,7 @@ Llist *Scope::getId() const {
 Llist *Scope::getInts() const {
     return ints;
 }
-https://forum.qt.io/topic/15324/solved-updating-the-text-on-a-qlabel/2
+
 Llist *Scope::getChars() const {
     return chars;
 }
