@@ -6,6 +6,14 @@
 #include "iostream"
 #include "MemoryController.h"
 #include <nlohmann/json.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/sources/logger.hpp>
+#include <boost/log/core.hpp>
+#include <boost/date_time.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/global_logger_storage.hpp>
 
 using namespace std;
 
@@ -39,7 +47,8 @@ void Parser::Extract_instruction(const string &instruction) {
             Define(tag, type);
         }
     } else {
-        cout << right << " Error in the json" << endl;
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Error in the json\n";
     }
 
 }
@@ -60,7 +69,8 @@ void Parser::Assign(const string &variable, string value) {
     if ((space == std::string::npos || space <= 2) && dot == std::string::npos) {
         search = Controller->search(" " + variable);
         if (search == nullptr) {
-            cout << "not founded variable" << variable;
+            Parser::logg +=
+                    "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] \"Error not founded variable\"\n" + variable;
             return;
         }
         if (search->getTypeString()=="reference"){
@@ -73,10 +83,11 @@ void Parser::Assign(const string &variable, string value) {
         string structure = variable.substr(0, dot);
         search = Controller->search(structure);
         if (search == nullptr) {
-            cout << "not founded variable" << variable;
+            Parser::logg +=
+                    "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] \"Error not founded variable\"\n" + variable;
             return;
         }
-        string propierti = variable.substr(dot, string::npos);
+        string propierti = variable.substr(dot+1, string::npos);
         auto *ptr = static_cast<Scope *>(search->getValue());
         ptr->Search(propierti);
         string type = ptr->getType();
@@ -96,7 +107,8 @@ void Parser::Assign(const string &variable, string value) {
             search = ptr->getDoubles()->getNode(propierti);
         }
         if (search == nullptr) {
-            cout << "the dfinition o fthe assign can not be processed" << structure << propierti;
+            Parser::logg +=
+                    "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The definition of the assign can not be processed \n" + structure + propierti;
             return;
         }
         if (search->getTypeString()=="reference"){
@@ -108,7 +120,8 @@ void Parser::Assign(const string &variable, string value) {
         string tag = variable.substr(space, string::npos);
         search = Define(tag, type);
         if (search == nullptr) {
-            cout << "the dfinition o fthe assign can not be processed" << type << tag;
+            Parser::logg +=
+                    "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The definition of the assign can not be processed \n" + type + tag;
             return;
         }
         if (search->getTypeString()=="reference"){
@@ -122,7 +135,8 @@ void Parser::Assign(const string &variable, string value) {
     }
     auto operation_value = Instruction_Aux(value);
     if (operation_value == "False") {
-        cout << "operation calculation failed";
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Error operation calculation failed \n";
         return;
     }
 
@@ -166,7 +180,8 @@ LNode *Parser::Define(const string &tag, const string &type) {
 
     }
     if (returner == nullptr) {
-        cout << "error in definiton of variable, overloading tag?" << tag;
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Error in definiton of variable, overloading tag? \n" + tag;
     }
     return returner;
 }
@@ -194,7 +209,8 @@ LNode *Parser::Aux_Assign(const string &variable) {
     if (dot == std::string::npos) {
         search = Controller->search(variable);
         if (search == nullptr) {
-            cout << "not founded variable" << variable;
+            Parser::logg +=
+                    "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Not founded variable\n" + variable;
             return search;
         }
     } else {
@@ -239,15 +255,18 @@ string Parser::Instruction_Aux(string instruction) {
     try {
         if (sum != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, sum));
-            LNode *second = Aux_Assign(instruction.substr(sum, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(sum+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, sum)) + stof(instruction.substr(sum, string::npos));
+                    float value = stof(instruction.substr(0, sum)) + stof(instruction.substr(sum+1, string::npos));
+                    return std::to_string(value);
                 }
                 catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, sum) << "+"
-                         << instruction.substr(sum, string::npos) << endl;
+                         << instruction.substr(sum+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
+                    Parser::logg +=
+                            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
                 }
             }
             if (second == nullptr && first != nullptr) {
@@ -265,7 +284,7 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     left_side = *(double *) first->getValue();
                 }
-                float value = left_side + stof(instruction.substr(sum, string::npos));
+                float value = left_side + stof(instruction.substr(sum+1, string::npos));
                 return std::to_string(value);
             }
             if (second != nullptr && first == nullptr) {
@@ -322,23 +341,28 @@ string Parser::Instruction_Aux(string instruction) {
         }
     }
     catch (exception &e) {
-        cout << "exception while calculating " << instruction.substr(0, rest) << "+"
-             << instruction.substr(rest, string::npos) << endl;
+        cout << "exception while calculating " << instruction.substr(0, sum) << "+"
+             << instruction.substr(sum+1, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
     }
 
     try {
         if (rest != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, rest));
-            LNode *second = Aux_Assign(instruction.substr(rest, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(rest+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, rest)) - stof(instruction.substr(rest, string::npos));
+                    float value = stof(instruction.substr(0, rest)) - stof(instruction.substr(rest+1, string::npos));
+                    return std::to_string(value);
                 }
                 catch (exception &e) {
-                    cout << "exception while calculating " << instruction.substr(0, rest) << "+"
-                         << instruction.substr(rest, string::npos) << endl;
+                    cout << "exception while calculating " << instruction.substr(0, rest) << "-"
+                         << instruction.substr(rest+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
+                    Parser::logg +=
+                            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
                 }
             }
             if (second == nullptr && first != nullptr) {
@@ -356,7 +380,7 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     left_side = *(double *) first->getValue();
                 }
-                float value = left_side - stof(instruction.substr(rest, string::npos));
+                float value = left_side - stof(instruction.substr(rest+1, string::npos));
                 return std::to_string(value);
             }
             if (second == nullptr && first != nullptr) {
@@ -435,20 +459,25 @@ string Parser::Instruction_Aux(string instruction) {
         cout << "exception while calculating " << instruction.substr(0, rest) << "-"
              << instruction.substr(rest, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
     }
 
     try {
         if (divide != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, divide));
-            LNode *second = Aux_Assign(instruction.substr(divide, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(divide+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, divide)) + stof(instruction.substr(divide, string::npos));
+                    float value = stof(instruction.substr(0, divide)) / stof(instruction.substr(divide+1, string::npos));
+                    return std::to_string(value);
                 }
                 catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "+"
-                         << instruction.substr(divide, string::npos) << endl;
+                         << instruction.substr(divide+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
+                    Parser::logg +=
+                            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
                 }
             }
             if (second == nullptr && first != nullptr) {
@@ -467,12 +496,14 @@ string Parser::Instruction_Aux(string instruction) {
                     left_side = *(double *) first->getValue();
                 }
                 try {
-                    float value = left_side / stof(instruction.substr(sum, string::npos));
+                    float value = left_side / stof(instruction.substr(sum+1, string::npos));
                     return std::to_string(value);
                 } catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "/"
-                         << instruction.substr(divide, string::npos) << endl;
+                         << instruction.substr(divide+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
+                    Parser::logg +=
+                            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
                 }
                 return "False";
             }
@@ -529,8 +560,10 @@ string Parser::Instruction_Aux(string instruction) {
                     return std::to_string(value);
                 } catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, divide) << "/"
-                         << instruction.substr(divide, string::npos) << endl;
+                         << instruction.substr(divide+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
+                    Parser::logg +=
+                            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
                 }
                 return "False";
             }
@@ -539,22 +572,31 @@ string Parser::Instruction_Aux(string instruction) {
     }
     catch (exception &e) {
         cout << "exception while calculating " << instruction.substr(0, rest) << "/"
-             << instruction.substr(rest, string::npos) << endl;
+             << instruction.substr(rest+1, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
     }
 
     try {
         if (multy != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, multy));
-            LNode *second = Aux_Assign(instruction.substr(multy, string::npos));
+            LNode *second = Aux_Assign(instruction.substr(multy+1, string::npos));
             if (first == nullptr & second == nullptr) {
                 try {
-                    float value = stof(instruction.substr(0, multy)) * stof(instruction.substr(multy, string::npos));
+                    string number1= instruction.substr(0, multy);
+                    string number2=instruction.substr(multy+1, string::npos);
+
+                    float value = stof(number1) * stof(number2);
+                    return std::to_string(value);
+
                 }
                 catch (exception &e) {
                     cout << "exception while calculating " << instruction.substr(0, multy) << "*"
-                         << instruction.substr(multy, string::npos) << endl;
+                         << instruction.substr(multy+1, string::npos) << endl;
                     cout << "exception:" << e.what() << endl;
+                    Parser::logg +=
+                            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
                 }
             }
             if (second == nullptr && first != nullptr) {
@@ -572,7 +614,7 @@ string Parser::Instruction_Aux(string instruction) {
                 } else if (type == "double") {
                     left_side = *(double *) first->getValue();
                 }
-                float value = left_side * stof(instruction.substr(multy, string::npos));
+                float value = left_side * stof(instruction.substr(multy+1, string::npos));
                 return std::to_string(value);
             }
             if (second != nullptr && first == nullptr) {
@@ -630,9 +672,11 @@ string Parser::Instruction_Aux(string instruction) {
         }
     }
     catch (exception &e) {
-        cout << "exception while calculating " << instruction.substr(0, rest) << "*"
-             << instruction.substr(rest, string::npos) << endl;
+        cout << "exception while calculating " << instruction.substr(0, multy) << "*"
+             << instruction.substr(multy+1, string::npos) << endl;
         cout << "exception:" << e.what() << endl;
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Catch exception\n" + e.what();
     }
 
 
@@ -645,7 +689,7 @@ string Parser::Generate_Json() {
     nlohmann::json Json;
     JS = Controller->getMainScope()->GetJson();
     Json["Memory"] = JS;
-    Json["out"] = "";
+    Json["out"] = out;
     Json["logger"] = logg;
     return to_string(Json);
 }

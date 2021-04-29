@@ -18,7 +18,7 @@ int LNode::getReferences() const {
 }
 
 void LNode::setReferences(int references) {
-    LNode::references = references;
+    LNode::references += references;
 }
 
 void *LNode::getValue() const {
@@ -99,24 +99,38 @@ string LNode::getJson() {
     JS=JS+id+" ";
     if (type_string == "int") {
         int * Jsvalue= (int*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+std::to_string(*Jsvalue);
     } else if (type_string == "char") {
         char * Jsvalue= (char*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+std::to_string(*Jsvalue);
     } else if (type_string == "float") {
         float * Jsvalue= (float*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+std::to_string(*Jsvalue);
     } else if (type_string == "struct") {
         Scope * Jsvalue= (Scope*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+"\n"+Jsvalue->GetJson();
     } else if (type_string == "reference") {
         LNode * Jsvalue= (LNode*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+Jsvalue->id;
     } else if (type_string == "long") {
         long * Jsvalue= (long*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+std::to_string(*Jsvalue);
     } else if (type_string == "double") {
         double * Jsvalue= (double*) getValue();
+        int *direction= reinterpret_cast<int *>(&Jsvalue);
+        JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+std::to_string(*Jsvalue);
     }
     JS= JS+" "+std::to_string(references);

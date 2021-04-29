@@ -96,7 +96,7 @@ LNode *MemoryController::define_floats(string tag) {
     node->setValue((void *) new string("float"));
     Actual_Scope->getId()->setFirst(node);
     Gcollector *Garbage = new Gcollector;
-    auto *node2 = Garbage->getInts();
+    auto *node2 = Garbage->getFloats();
     node2->setId(tag);
     Actual_Scope->getFloats()->setFirst(node2);
     return node2;
@@ -199,6 +199,9 @@ LNode *MemoryController::search(string tag) {
     LNode *founded = nullptr;
     Scope *Scope_search;
     Scope_search = Actual_Scope->Search(tag);
+    if(Scope_search== nullptr){
+        return nullptr;
+    }
     string type = Scope_search->getType();
     if (type == "int") {
         founded = Scope_search->getInts()->getNode(tag);

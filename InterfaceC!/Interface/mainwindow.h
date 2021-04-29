@@ -1,3 +1,4 @@
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -7,11 +8,15 @@
 namespace Ui {
 class MainWindow;
 }
-
+/**
+ * @brief Class that contains a window
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+/**
+ * @brief Constructor and destructor class
+ */
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
