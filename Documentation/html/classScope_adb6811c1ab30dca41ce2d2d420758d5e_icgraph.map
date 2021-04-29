@@ -1,0 +1,6 @@
+<map id="Scope::getType" name="Scope::getType">
+<area shape="rect" id="node1" title=" " alt="" coords="224,56,337,83"/>
+<area shape="rect" id="node2" href="$classParser.html#ad548d6c7d52e8147b3c2067b2696c681" title="function to assign a value to a variable by it tag" alt="" coords="37,5,145,32"/>
+<area shape="rect" id="node3" href="$classParser.html#aa515a5cb14d30596b5b280b977fa79d4" title="get the LNode of a objet property or a variable" alt="" coords="21,56,160,83"/>
+<area shape="rect" id="node4" href="$classMemoryController.html#aa9db24d5c470a2fb527a37c13408fe63" title="search for a Variable in the availables scopes" alt="" coords="5,107,176,133"/>
+</map>

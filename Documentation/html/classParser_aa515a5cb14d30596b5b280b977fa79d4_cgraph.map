@@ -1,0 +1,5 @@
+<map id="Parser::Aux_Assign" name="Parser::Aux_Assign">
+<area shape="rect" id="node1" title="get the LNode of a objet property or a variable" alt="" coords="5,67,144,93"/>
+<area shape="rect" id="node2" href="$classLNode.html#a3f81929e609e22bcd9a787e633fa3356" title="Recursive function that search for a tag." alt="" coords="193,29,299,56"/>
+<area shape="rect" id="node3" href="$classScope.html#aff36e72e3ebf8936f2081713f8db9992" title="brief int he actual scope and previous scopes for a variable" alt="" coords="192,104,300,131"/>
+</map>

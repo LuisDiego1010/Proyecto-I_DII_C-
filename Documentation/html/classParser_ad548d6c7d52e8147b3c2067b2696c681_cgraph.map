@@ -1,0 +1,5 @@
+<map id="Parser::Assign" name="Parser::Assign">
+<area shape="rect" id="node1" title="function to assign a value to a variable by it tag" alt="" coords="5,67,113,93"/>
+<area shape="rect" id="node2" href="$classLNode.html#a3f81929e609e22bcd9a787e633fa3356" title="Recursive function that search for a tag." alt="" coords="162,29,269,56"/>
+<area shape="rect" id="node3" href="$classScope.html#aff36e72e3ebf8936f2081713f8db9992" title="brief int he actual scope and previous scopes for a variable" alt="" coords="161,104,269,131"/>
+</map>

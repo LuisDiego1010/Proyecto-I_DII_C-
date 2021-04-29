@@ -1,0 +1,6 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="Main of the server recieve from a Reply socket, do thing that are in the string and reply a json whit..." alt="" coords="5,56,56,83"/>
+<area shape="rect" id="node2" href="$classParser.html#ad688233ebb4852441c56454924e3bf8b" title="Recursive function that determine what to do with the instruction." alt="" coords="104,5,281,32"/>
+<area shape="rect" id="node3" href="$classParser.html#a9de7bca0c2661317746895bea32bbe7d" title=" " alt="" coords="115,56,270,83"/>
+<area shape="rect" id="node4" href="$Main_01Server_8cpp.html#ae1a3968e7947464bee7714f6d43b7002" title=" " alt="" coords="171,107,215,133"/>
+</map>

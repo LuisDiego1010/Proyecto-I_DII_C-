@@ -1,0 +1,6 @@
+<map id="LNode::search" name="LNode::search">
+<area shape="rect" id="node1" title="Recursive function that search for a tag." alt="" coords="192,56,299,83"/>
+<area shape="rect" id="node2" href="$classParser.html#ad548d6c7d52e8147b3c2067b2696c681" title="function to assign a value to a variable by it tag" alt="" coords="21,5,129,32"/>
+<area shape="rect" id="node3" href="$classParser.html#aa515a5cb14d30596b5b280b977fa79d4" title="get the LNode of a objet property or a variable" alt="" coords="5,56,144,83"/>
+<area shape="rect" id="node4" href="$classLlist.html#a748343b1dd0ca1c02eaf900af63577db" title="Recursive function that search for a tag and return the type of the variable with this tag." alt="" coords="28,107,121,133"/>
+</map>

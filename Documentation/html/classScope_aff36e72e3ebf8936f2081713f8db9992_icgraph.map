@@ -1,0 +1,13 @@
+<map id="Scope::Search" name="Scope::Search">
+<area shape="rect" id="node1" title="brief int he actual scope and previous scopes for a variable" alt="" coords="248,275,356,301"/>
+<area shape="rect" id="node2" href="$classParser.html#ad548d6c7d52e8147b3c2067b2696c681" title="function to assign a value to a variable by it tag" alt="" coords="49,5,157,32"/>
+<area shape="rect" id="node3" href="$classParser.html#aa515a5cb14d30596b5b280b977fa79d4" title="get the LNode of a objet property or a variable" alt="" coords="33,56,172,83"/>
+<area shape="rect" id="node4" href="$classMemoryController.html#abda69812911e33a1295109173c3915a0" title=" " alt="" coords="19,107,186,149"/>
+<area shape="rect" id="node5" href="$classMemoryController.html#aeca27ac53358ef654308b6a90de54bc1" title=" " alt="" coords="19,173,186,214"/>
+<area shape="rect" id="node6" href="$classMemoryController.html#aeddc3c48a7e39b5bcfb4c2e23549b8d6" title=" " alt="" coords="19,238,186,279"/>
+<area shape="rect" id="node7" href="$classMemoryController.html#ab48b3de5ed7f68eec61b77343f747a55" title=" " alt="" coords="5,304,200,331"/>
+<area shape="rect" id="node8" href="$classMemoryController.html#a0790a9877e34915f7062dcbe96ba3194" title=" " alt="" coords="19,355,186,397"/>
+<area shape="rect" id="node9" href="$classMemoryController.html#ab6f3b66e7918f9690c8b703333879c3f" title=" " alt="" coords="19,421,186,462"/>
+<area shape="rect" id="node10" href="$classMemoryController.html#ac480227d61b289e5a6f3914e3467803d" title=" " alt="" coords="19,486,186,527"/>
+<area shape="rect" id="node11" href="$classMemoryController.html#aa9db24d5c470a2fb527a37c13408fe63" title="search for a Variable in the availables scopes" alt="" coords="17,552,188,579"/>
+</map>

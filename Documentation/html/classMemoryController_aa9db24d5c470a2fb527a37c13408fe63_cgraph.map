@@ -1,0 +1,5 @@
+<map id="MemoryController::search" name="MemoryController::search">
+<area shape="rect" id="node1" title="search for a Variable in the availables scopes" alt="" coords="5,43,176,69"/>
+<area shape="rect" id="node2" href="$classLlist.html#a7a7b59fee1d4635d6122049828560411" title="Get the Node wher a Tag was founded." alt="" coords="227,5,329,32"/>
+<area shape="rect" id="node3" href="$classScope.html#aff36e72e3ebf8936f2081713f8db9992" title="brief int he actual scope and previous scopes for a variable" alt="" coords="224,80,332,107"/>
+</map>

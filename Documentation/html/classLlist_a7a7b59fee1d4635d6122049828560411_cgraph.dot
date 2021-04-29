@@ -1,0 +1,13 @@
+digraph "Llist::getNode"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Llist::getNode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Get the Node wher a Tag was founded."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="LNode::getId",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLNode.html#a4f3ac3abd078764756fdcd54563777a4",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="LNode::getNext",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLNode.html#ad910b1e5417b9e879e448d7d85976d46",tooltip=" "];
+}

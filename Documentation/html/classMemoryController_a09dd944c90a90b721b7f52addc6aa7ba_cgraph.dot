@@ -1,0 +1,33 @@
+digraph "MemoryController::Unscope"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="MemoryController::Unscope",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Close the actual escope."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Scope::Delete",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classScope.html#a148b2d8124ad1c29d8b62a3c2cdb1a51",tooltip=" "];
+  Node2 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Llist::getFirst",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLlist.html#a56b4490f30b47ba0d812976ba345d24b",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="LNode::getNext",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLNode.html#ad910b1e5417b9e879e448d7d85976d46",tooltip=" "];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Scope::getNextScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classScope.html#a2a3d51cd40fd9ea8d183aa311c08c9f5",tooltip=" "];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Scope::getPreviousScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classScope.html#a5922c2d56d10de17fda50502e05e49fc",tooltip=" "];
+  Node2 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="LNode::getValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLNode.html#a2b94043203b531a2ca1a38f22a24f9a4",tooltip=" "];
+  Node2 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="MemoryController::setActual\lScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMemoryController.html#a83822d8c9e1fa00395a3d276071d28c3",tooltip=" "];
+  Node2 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Llist::setFirst",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLlist.html#aa3c43d2b455ba74835342a64d4909ed8",tooltip="place a LNode in the first position"];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="LNode::setNext",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLNode.html#adcffea823f003647df103ddb98a2828b",tooltip=" "];
+  Node2 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Scope::setPreviousScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classScope.html#af26793615be8b26b66d2536595449926",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="Scope::setNextScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classScope.html#a5cc37443e670589c3c5a502fd75eb22a",tooltip=" "];
+}
