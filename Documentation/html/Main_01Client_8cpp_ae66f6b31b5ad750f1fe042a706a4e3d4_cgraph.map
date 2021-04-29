@@ -1,4 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="node1" title="Main, work with the socket reply and show the answer in the GUI." alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node2" href="$Main_01Client_8cpp.html#a25a1b375f3cd260e89892fb2584751a6" title="Send the line and receive json with the new state of the server remember to free the return address a..." alt="" coords="104,5,193,32"/>
-</map>
