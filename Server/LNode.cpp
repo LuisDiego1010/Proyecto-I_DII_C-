@@ -67,7 +67,7 @@ LNode::LNode(const string &type) {
     } else if (type == "reference") {
         this->type_string="reference";
         int a;
-        int ref{a};
+        int& ref=a;
         memoryController->increment_ptr(sizeof(ref));
     } else if (type == "long") {
         this->type_string="long";

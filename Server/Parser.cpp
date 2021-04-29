@@ -49,20 +49,26 @@ void Parser::Assign(const string &variable, string value) {
     cout << value << " =value" << endl;
     size_t space;
     size_t dot;
+    size_t dot_value;
     space = variable.find(' ');
     dot = variable.find('.');
+    dot_value = variable.find('.');
     LNode *search;
     string type_string;
 
     // detect if the code variable is a declaration, structure.propierty or a variable.
     if ((space == std::string::npos || space <= 2) && dot == std::string::npos) {
-        search = Controller->search(" "+variable);
+        search = Controller->search(" " + variable);
         if (search == nullptr) {
             cout << "not founded variable" << variable;
             return;
         }
+        if (search->getTypeString()=="reference"){
+            search=(LNode*)search->getValue();
+        }
         type_string = search->getTypeString();
-    } else if (space == std::string::npos) {
+    } else
+        if (space == std::string::npos) {
         //Do structure things
         string structure = variable.substr(0, dot);
         search = Controller->search(structure);
@@ -93,6 +99,9 @@ void Parser::Assign(const string &variable, string value) {
             cout << "the dfinition o fthe assign can not be processed" << structure << propierti;
             return;
         }
+        if (search->getTypeString()=="reference"){
+            search=(LNode*)search->getValue();
+        }
         type_string = search->getTypeString();
     } else {
         string type = variable.substr(0, space);
@@ -102,9 +111,15 @@ void Parser::Assign(const string &variable, string value) {
             cout << "the dfinition o fthe assign can not be processed" << type << tag;
             return;
         }
+        if (search->getTypeString()=="reference"){
+            search=(LNode*)search->getValue();
+        }
         type_string = search->getTypeString();
     }
-
+    if (search->getTypeString()=="reference"){
+        LNode &ref= *(Controller->search(" " + variable));
+        search->setValue(Controller->search(" " + variable)) ;
+    }
     auto operation_value = Instruction_Aux(value);
     if (operation_value == "False") {
         cout << "operation calculation failed";
@@ -146,6 +161,9 @@ LNode *Parser::Define(const string &tag, const string &type) {
         Controller->new_scope();
     } else if (type == "unscope") {
         Controller->Unscope();
+    } else if (type == "printf") {
+        Parser::out += Instruction_Aux(tag);
+
     }
     if (returner == nullptr) {
         cout << "error in definiton of variable, overloading tag?" << tag;
@@ -232,7 +250,7 @@ string Parser::Instruction_Aux(string instruction) {
                     cout << "exception:" << e.what() << endl;
                 }
             }
-            if (second == nullptr) {
+            if (second == nullptr && first != nullptr) {
                 double left_side;
                 const string &type = first->getTypeString();
                 if (type == "int") {
@@ -248,6 +266,23 @@ string Parser::Instruction_Aux(string instruction) {
                     left_side = *(double *) first->getValue();
                 }
                 float value = left_side + stof(instruction.substr(sum, string::npos));
+                return std::to_string(value);
+            }
+            if (second != nullptr && first == nullptr) {
+                double rigth_side;
+                const string &type = first->getTypeString();
+                if (type == "int") {
+                    rigth_side = *(int *) first->getValue();
+
+                } else if (type == "float") {
+                    rigth_side = *(float *) first->getValue();
+
+                } else if (type == "long") {
+                    rigth_side = *(long *) first->getValue();
+                } else if (type == "double") {
+                    rigth_side = *(double *) first->getValue();
+                }
+                float value = stof(instruction.substr(0, divide)) + rigth_side;
                 return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
@@ -306,7 +341,7 @@ string Parser::Instruction_Aux(string instruction) {
                     cout << "exception:" << e.what() << endl;
                 }
             }
-            if (second == nullptr) {
+            if (second == nullptr && first != nullptr) {
                 double left_side;
                 const string &type = first->getTypeString();
                 if (type == "int") {
@@ -322,6 +357,42 @@ string Parser::Instruction_Aux(string instruction) {
                     left_side = *(double *) first->getValue();
                 }
                 float value = left_side - stof(instruction.substr(rest, string::npos));
+                return std::to_string(value);
+            }
+            if (second == nullptr && first != nullptr) {
+                double rigth_side;
+                const string &type = first->getTypeString();
+                if (type == "int") {
+                    rigth_side = *(int *) first->getValue();
+
+                } else if (type == "float") {
+                    rigth_side = *(float *) first->getValue();
+
+                } else if (type == "long") {
+                    rigth_side = *(long *) first->getValue();
+
+                } else if (type == "double") {
+                    rigth_side = *(double *) first->getValue();
+                }
+                float value = stof(instruction.substr(0, divide)) - rigth_side;
+                return std::to_string(value);
+            }
+            if (second != nullptr && first == nullptr) {
+                double rigth_side;
+                const string &type = first->getTypeString();
+                if (type == "int") {
+                    rigth_side = *(int *) first->getValue();
+
+                } else if (type == "float") {
+                    rigth_side = *(float *) first->getValue();
+
+                } else if (type == "long") {
+                    rigth_side = *(long *) first->getValue();
+
+                } else if (type == "double") {
+                    rigth_side = *(double *) first->getValue();
+                }
+                float value = rigth_side - stof(instruction.substr(0, multy));
                 return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
@@ -380,7 +451,7 @@ string Parser::Instruction_Aux(string instruction) {
                     cout << "exception:" << e.what() << endl;
                 }
             }
-            if (second == nullptr) {
+            if (second == nullptr && first != nullptr) {
                 double left_side;
                 const string &type = first->getTypeString();
                 if (type == "int") {
@@ -404,6 +475,24 @@ string Parser::Instruction_Aux(string instruction) {
                     cout << "exception:" << e.what() << endl;
                 }
                 return "False";
+            }
+            if (second != nullptr && first == nullptr) {
+                double rigth_side;
+                const string &type = first->getTypeString();
+                if (type == "int") {
+                    rigth_side = *(int *) first->getValue();
+
+                } else if (type == "float") {
+                    rigth_side = *(float *) first->getValue();
+
+                } else if (type == "long") {
+                    rigth_side = *(long *) first->getValue();
+
+                } else if (type == "double") {
+                    rigth_side = *(double *) first->getValue();
+                }
+                float value = stof(instruction.substr(0, divide)) / rigth_side;
+                return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
                 string type = first->getTypeString();
@@ -468,7 +557,7 @@ string Parser::Instruction_Aux(string instruction) {
                     cout << "exception:" << e.what() << endl;
                 }
             }
-            if (second == nullptr) {
+            if (second == nullptr && first != nullptr) {
                 double left_side;
                 const string &type = first->getTypeString();
                 if (type == "int") {
@@ -484,6 +573,24 @@ string Parser::Instruction_Aux(string instruction) {
                     left_side = *(double *) first->getValue();
                 }
                 float value = left_side * stof(instruction.substr(multy, string::npos));
+                return std::to_string(value);
+            }
+            if (second != nullptr && first == nullptr) {
+                double rigth_side;
+                const string &type = first->getTypeString();
+                if (type == "int") {
+                    rigth_side = *(int *) first->getValue();
+
+                } else if (type == "float") {
+                    rigth_side = *(float *) first->getValue();
+
+                } else if (type == "long") {
+                    rigth_side = *(long *) first->getValue();
+
+                } else if (type == "double") {
+                    rigth_side = *(double *) first->getValue();
+                }
+                float value = rigth_side * stof(instruction.substr(0, multy));
                 return std::to_string(value);
             }
             if (second != nullptr & first != nullptr) {
@@ -541,4 +648,14 @@ string Parser::Generate_Json() {
     Json["out"] = "";
     Json["logger"] = logg;
     return to_string(Json);
+}
+
+Scope *Parser::GetLastScope() {
+    Scope *tmp = Controller->getMainScope();
+
+    while (tmp->getNextScope() != nullptr) {
+        tmp = tmp->getNextScope();
+    }
+
+    return tmp;
 }

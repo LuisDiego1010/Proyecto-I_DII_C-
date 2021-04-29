@@ -40,6 +40,7 @@ class MemoryController {
     Scope *Actual_Scope;
 public:
     void *getPtrActual() const;
+    static int size;
 
 
 public:

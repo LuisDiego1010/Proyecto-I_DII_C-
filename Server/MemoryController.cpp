@@ -17,6 +17,7 @@
 #include <boost/log/sources/global_logger_storage.hpp>
 
 MemoryController *MemoryController::self;
+int MemoryController::size;
 
 
 void *MemoryController::operator new(std::size_t) {
@@ -32,7 +33,7 @@ void MemoryController::operator delete(void *a) {
 
 MemoryController::MemoryController() {
     if (ptr_actual != nullptr) { return; }
-    MemoryController::ptr_start = ::operator new(100 * 1024 * sizeof(char));
+    MemoryController::ptr_start = ::operator new(size * 1024 * sizeof(char));
     MemoryController::ptr_End = (char *) ptr_start + 100 * 1024 - 1;
     MemoryController::ptr_actual = ptr_start;
     MemoryController::Main_Scope = new Scope;
@@ -46,8 +47,6 @@ void MemoryController::new_scope() {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a scope\n";
     BOOST_LOG_TRIVIAL(info) << "Creating new scope";
-    Actual_Scope->setNextScope(scope);
-    scope->setPreviousScope(scope);
     Actual_Scope = scope;
 }
 
@@ -184,7 +183,7 @@ LNode *MemoryController::define_doubles(string tag) {
 
 void MemoryController::testing_scope() {
     if (Actual_Scope == nullptr) {
-        Actual_Scope == Main_Scope;
+        Actual_Scope = Main_Scope;
     }
 }
 
@@ -229,6 +228,9 @@ void MemoryController::Unscope() {
     tmp = Actual_Scope;
     if (Actual_Scope == Main_Scope) {
         return;
+    }
+    if (Actual_Scope->getPreviousScope()== nullptr && Actual_Scope!=Main_Scope){
+        Actual_Scope=Parser::GetLastScope();
     }
     Actual_Scope = Actual_Scope->getPreviousScope();
     Actual_Scope->setNextScope(nullptr);

@@ -50,18 +50,25 @@ void init_loggin() {
  *
  * @return
  */
-int main() {
+int main(int argc, char *argv[]) {
+    string endp="4040";
+    if(argc>1){
+        endp=argv[1];
+        MemoryController::size=std::stoi(argv[2]);
+    }else{
+        MemoryController::size=10;
+    }
     loggerC::get();
     cout << "init" << endl;
     test();
     cout << "test runned" << endl;
-    const endpoint_t endpoint = "tcp://*:4040";
+    const endpoint_t endpoint = "tcp://*:"+endp;
     // initialize the 0MQ context
     zmqpp::context context;
 
     // generate a reply socket
     zmqpp::socket_type type = zmqpp::socket_type::reply;
-    socket Socket = socket(context, type);
+    zmqpp::socket Socket =  zmqpp::socket(context, type);
 
     // bind to the socket
     Socket.bind(endpoint);

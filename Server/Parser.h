@@ -66,6 +66,10 @@ public:
      *Generate  the Json from the memory view, logger and the out
      */
     string Generate_Json();
+    /**
+     * Get the las nexted scope.
+     */
+    static Scope * GetLastScope();
 };
 
 

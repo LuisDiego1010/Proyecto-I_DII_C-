@@ -24,8 +24,8 @@ int main()
          << " bytes" << endl;
     cout << "Size of wchar_t : " << sizeof(wchar_t)
          << " bytes" <<endl;
-    int a;
-    int& ref{a};
+    double a;
+    double& ref{a};
     cout << "Size of ptr : " << sizeof(ref)
          << " bytes" <<endl;
 
