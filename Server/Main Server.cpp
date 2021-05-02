@@ -28,6 +28,7 @@ namespace keywords = boost::log::keywords;
 namespace src = boost::log::sources;
 
 #define BOOST_LOG_DYN_LINK 1
+
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT (loggerC, src::logger_mt);
 
 void test();
@@ -38,24 +39,24 @@ void test();
  * @return
  */
 int main(int argc, char *argv[]) {
-    string endp="4040";
-    if(argc>1){
-        endp=argv[1];
-        MemoryController::size=std::stoi(argv[2]);
-    }else{
-        MemoryController::size=10;
+    string endp = "4040";
+    if (argc > 1) {
+        endp = argv[1];
+        MemoryController::size = std::stoi(argv[2]);
+    } else {
+        MemoryController::size = 10;
     }
     loggerC::get();
     cout << "init" << endl;
     test();
     cout << "test runned" << endl;
-    const endpoint_t endpoint = "tcp://*:"+endp;
+    const endpoint_t endpoint = "tcp://*:" + endp;
     // initialize the 0MQ context
     zmqpp::context context;
 
     // generate a reply socket
     zmqpp::socket_type type = zmqpp::socket_type::reply;
-    zmqpp::socket Socket =  zmqpp::socket(context, type);
+    zmqpp::socket Socket = zmqpp::socket(context, type);
 
     // bind to the socket
     Socket.bind(endpoint);
@@ -66,29 +67,28 @@ int main(int argc, char *argv[]) {
 
     bool a = true;
     Parser::logg +=
+            "started server at: [" + to_simple_string(boost::posix_time::second_clock::local_time()) + "]\n";
+    Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Waiting for data\n";
     while (a) {
-
+        Parser::out = " ";
         std::string Request;
         Socket.receive(Request);
         std::cout << "recieved data";
         std::cout << Request << "=data";
 //        call to things
-        Parser::logg +=
-                "started server at: [" + to_simple_string(boost::posix_time::second_clock::local_time()) + "]\n";
         message_t reply;
 //        reply.copy(msg.data());
         parsing->Extract_instruction(Request);
         Request = parsing->Generate_Json();
         cout << Request;
         Socket.send(Request);
-
+        Parser::logg = " ";
         if (msg.empty()) {
             return 0;
 
         }
-        Parser::logg = " ";
-        Parser::out=" ";
+
     }
 }
 
@@ -99,7 +99,7 @@ void test() {
     string b;
     a = R"({"type":"assign","left":"int a","rigth":"15*11"})";
     a2 = R"({"type":"assign","left":"a","rigth":"16"})";
-    b = R"({"type":"assign","left":"int b","rigth":"10"})";
+    b = R"({"type":"assign","left":"float b","rigth":"10.22"})";
     parser->Extract_instruction(a);
     cout << parser->Generate_Json();
     parser->Extract_instruction(b);
@@ -107,5 +107,6 @@ void test() {
     parser->Extract_instruction(a2);
     cout << parser->Generate_Json();
     Parser::logg +=
-            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The parser is extracting the instructions\n";
+            "[" + to_simple_string(boost::posix_time::second_clock::local_time()) +
+            "] The parser is extracting the instructions\n";
 }

@@ -103,10 +103,11 @@ string LNode::getJson() {
         JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
         JS=JS+std::to_string(*Jsvalue);
     } else if (type_string == "char") {
-        char * Jsvalue= (char*) getValue();
+        char * Jsvalue= (char*) this->getValue();
         int *direction= reinterpret_cast<int *>(&Jsvalue);
         JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
-        JS=JS+std::to_string(*Jsvalue);
+        string a={*Jsvalue};
+        JS=JS+a;
     } else if (type_string == "float") {
         float * Jsvalue= (float*) getValue();
         int *direction= reinterpret_cast<int *>(&Jsvalue);
