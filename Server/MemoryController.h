@@ -110,6 +110,8 @@ public:
     Scope *getActualScope() const;
 
     void setActualScope(Scope *actualScope);
+
+    void Reset();
 };
 
 

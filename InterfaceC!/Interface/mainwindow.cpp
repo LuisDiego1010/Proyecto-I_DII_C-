@@ -32,6 +32,8 @@ void MainWindow::on_runbtn_clicked()
     }
     QString length = QString::number(listcode.length());
     ::count=0;
+    server_info= Socket.Comunicatte(Parser.qt_json(QString("reset")));
+    set_text(server_info);
 }
 
 void MainWindow::on_nextLinebtn_clicked()
@@ -46,7 +48,11 @@ void MainWindow::on_nextLinebtn_clicked()
         ui->tstdout->append("C! End of lines");
     }
 
-    QJsonObject informationInterface=server_info.object();
+    set_text(server_info);
+}
+
+void MainWindow::set_text(QJsonDocument a) {
+    QJsonObject informationInterface=a.object();
     QJsonValue memory=informationInterface.value("Memory");
     QJsonValue out=informationInterface.value("out");
     QJsonValue logger=informationInterface.value("logger");

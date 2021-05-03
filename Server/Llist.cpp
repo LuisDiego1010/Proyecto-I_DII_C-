@@ -19,6 +19,9 @@ LNode *Llist::getFirst() const {
 
 
 void Llist::setFirst(LNode *toadd) {
+    if(toadd== nullptr){
+        First=toadd;
+    }
     if (First != nullptr) {
         toadd->setNext(First);
         First = toadd;

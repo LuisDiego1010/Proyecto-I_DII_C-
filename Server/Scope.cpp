@@ -154,35 +154,59 @@ void Scope::Delete() {
         }
     }
     //code to send all types in the scope to the garbage
+    LNode * tmp;
     while (ints->getFirst() != nullptr) {
-        collector->setInts(ints->getFirst());
-        ints->setFirst(ints->getFirst()->getNext());
+        tmp=ints->getFirst();
+        ints->First= tmp->getNext();
+        collector->setInts(tmp);
     }
+    delete ints;
     while (chars->getFirst() != nullptr) {
-        collector->setChars(chars->getFirst());
-        chars->setFirst(chars->getFirst()->getNext());
+        tmp=chars->getFirst();
+        chars->First= tmp->getNext();
+        collector->setChars(tmp);
     }
+    delete chars;
     while (floats->getFirst() != nullptr) {
-        collector->setFloats(floats->getFirst());
-        floats->setFirst(floats->getFirst()->getNext());
+        tmp=floats->getFirst();
+        floats->First= tmp->getNext();
+        collector->setFloats(tmp);
     }
+    delete floats;
     while (doubles->getFirst() != nullptr) {
-        collector->setDoubles(doubles->getFirst());
-        doubles->setFirst(doubles->getFirst()->getNext());
+        tmp=doubles->getFirst();
+        doubles->First= tmp->getNext();
+        collector->setDoubles(tmp);
     }
+    delete doubles;
     while (longs->getFirst() != nullptr) {
-        collector->setLongs(longs->getFirst());
-        longs->setFirst(longs->getFirst()->getNext());
+        tmp=longs->getFirst();
+        longs->First= tmp->getNext();
+        collector->setLongs(tmp);
     }
+    delete longs;
     while (references->getFirst() != nullptr) {
-        collector->setReferences(references->getFirst());
-        references->setFirst(references->getFirst()->getNext());
+        tmp=references->getFirst();
+        references->First= tmp->getNext();
+        collector->setReferences(tmp);
     }
+    delete references;
     while (structs->getFirst() != nullptr) {
-        Scope *tmp = (Scope *) structs->getFirst()->getValue();
-        references->setFirst(references->getFirst()->getNext());
-        tmp->Delete();
+        Scope *tmp_S = (Scope *) structs->getFirst()->getValue();
+        references->First= (references->getFirst()->getNext());
+        tmp_S->Delete();
     }
+    delete structs;
+    while (id->getFirst() != nullptr) {
+        tmp= id->getFirst();
+        id->First= id->getFirst()->getNext();
+        if(tmp!= nullptr){
+            delete (string *)tmp->getValue();
+            ::delete tmp;
+        }
+    }
+    delete id;
+    delete this;
 
 }
 

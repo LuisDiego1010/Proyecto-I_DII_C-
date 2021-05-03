@@ -22,6 +22,7 @@ public:
     ~MainWindow();
     Socket_Client Socket= Socket_Client();
     Json_parser Parser=Json_parser();
+    void set_text(QJsonDocument);
 
 private slots:
     void on_runbtn_clicked();

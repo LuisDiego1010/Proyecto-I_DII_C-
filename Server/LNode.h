@@ -17,7 +17,7 @@ class LNode {
     int references;
     void* value;
     string type_string;
-    LNode* next;
+    LNode* next= nullptr;
 public:
     LNode(const string&);
     const string &getId() const;

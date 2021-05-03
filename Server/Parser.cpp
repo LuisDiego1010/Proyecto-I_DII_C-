@@ -45,6 +45,11 @@ void Parser::Extract_instruction(const string &instruction) {
             string type = Json["left"];
             string tag = Json["rigth"];
             Define(tag, type);
+        }else if(Json["type"]=="error"){
+            Controller->Reset();
+            Parser::logg+="Server: reseting data ["+to_simple_string(boost::posix_time::second_clock::local_time())+"]";
+            Parser::out+="Server: reset memory";
+            return;
         }
     } else {
         Parser::logg +=

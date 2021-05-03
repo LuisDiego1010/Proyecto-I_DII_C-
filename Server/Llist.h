@@ -12,8 +12,9 @@
  * \brief Container and operating class, linked list FIFO.
  */
 class Llist {
-    LNode *First;
 public:
+    LNode *First;
+
     Llist();
 
     LNode *getFirst() const;

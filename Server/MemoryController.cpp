@@ -247,7 +247,23 @@ Scope *MemoryController::getActualScope() const {
 
 void MemoryController::setActualScope(Scope *actualScope) {
     Actual_Scope = actualScope;
-};
+}
+
+void MemoryController::Reset() {
+    while(getMainScope()!=Actual_Scope){
+        Scope* tmp= Actual_Scope;
+        Actual_Scope=Actual_Scope->getPreviousScope();
+        tmp->Delete();
+        ::delete tmp;
+    }
+    Scope* tmp=Actual_Scope;
+    Main_Scope=new Scope;
+    Actual_Scope= nullptr;
+    testing_scope();
+    tmp->Delete();
+
+
+ };
 
 
 

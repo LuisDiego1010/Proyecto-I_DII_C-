@@ -66,6 +66,7 @@ int main(int argc, char *argv[]) {
     Parser *parsing = new Parser();
 
     bool a = true;
+    Parser::logg =" ";
     Parser::logg +=
             "started server at: [" + to_simple_string(boost::posix_time::second_clock::local_time()) + "]\n";
     Parser::logg +=
@@ -101,11 +102,13 @@ void test() {
     a2 = R"({"type":"assign","left":"a","rigth":"16"})";
     b = R"({"type":"assign","left":"float b","rigth":"10.22"})";
     parser->Extract_instruction(a);
-    cout << parser->Generate_Json();
+    cout << parser->Generate_Json()<<endl;
     parser->Extract_instruction(b);
-    cout << parser->Generate_Json();
+    cout << parser->Generate_Json()<<endl;
     parser->Extract_instruction(a2);
-    cout << parser->Generate_Json();
+    cout << parser->Generate_Json()<<endl;
+    parser->Controller->Reset();
+    cout << "reset: "<<parser->Generate_Json()<<endl;
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) +
             "] The parser is extracting the instructions\n";
