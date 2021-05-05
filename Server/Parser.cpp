@@ -144,21 +144,13 @@ void Parser::Assign(const string &variable, string value) {
         }
         type_string = search->getTypeString();
     }
+
     if (search->getTypeString() == "reference") {
         LNode &ref = *(Controller->search(" " + variable));
         search->setValue(Controller->search(" " + variable));
     }
-    auto operation_value = Instruction_Aux(value);
-    if (operation_value == "False") {
-        Parser::logg +=
-                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) +
-                "] Error operation calculation failed \n";
-        return;
-    }
 
-    if (type_string == "int") {
-        *(int *) search->getValue() = static_cast<int>(std::stof(operation_value));
-    } else if (type_string == "char") {
+    if (type_string == "char") {
 
         space = value.find(' ');
         if (space != std::string::npos) {
@@ -170,8 +162,8 @@ void Parser::Assign(const string &variable, string value) {
             value=*value.substr(com_value+1, com_value+2).data();
         }else{
             com_value=value.find(";");
-            if (value == operation_value) {
-                LNode *doublesearch = Controller->search(" "+operation_value.substr(0,com_value));
+            if (value == value) {
+                LNode *doublesearch = Controller->search(" "+value.substr(0,com_value));
                 if (doublesearch != nullptr) {
                     if (doublesearch->getTypeString() == "char") {
                         value = *(char *) doublesearch->getValue();
@@ -184,6 +176,18 @@ void Parser::Assign(const string &variable, string value) {
         };
 
         *(char *) search->getValue() = *value.data();
+    }
+
+    auto operation_value = Instruction_Aux(value);
+    if (operation_value == "False") {
+        Parser::logg +=
+                "[" + to_simple_string(boost::posix_time::second_clock::local_time()) +
+                "] Error operation calculation failed \n";
+        return;
+    }
+
+    if (type_string == "int") {
+        *(int *) search->getValue() = static_cast<int>(std::stof(operation_value));
     } else if (type_string == "float") {
         *(float *) search->getValue() = (std::stof(operation_value));
     } else if (type_string == "long") {
@@ -300,6 +304,9 @@ string Parser::Instruction_Aux(string instruction) {
     rest = instruction.find('-');
     divide = instruction.find('/');
     multy = instruction.find('*');
+
+
+
     if(sum == string::npos && rest == string::npos && divide == string::npos && multy == string::npos){
         instruction+="+0";
         sum = instruction.find('+');
@@ -747,9 +754,8 @@ string Parser::Instruction_Aux(string instruction) {
     if(char_!= nullptr){
         if(instruction==result && char_->getTypeString()=="char"){
             instruction=*(char*)char_->getValue();
+            return instruction;
         }
-
-
     }
 
     return instruction;

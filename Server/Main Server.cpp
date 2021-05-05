@@ -45,9 +45,9 @@ int main(int argc, char *argv[]) {
         MemoryController::size = 10;
     }
     loggerC::get();
-    cout << "init" << endl;
-    test();
-    cout << "test runned" << endl;
+//    cout << "init" << endl;
+//    test();
+//    cout << "test runned" << endl;
     const endpoint_t endpoint = "tcp://*:" + endp;
     // initialize the 0MQ context
     zmqpp::context context;

@@ -64,8 +64,10 @@ void Gcollector::setInts(LNode *int_node) {
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] The int data was deleted and is in the Collector\n";
     if(ints->getFirst()== nullptr){
+        int_node->setNext(nullptr);
         ints->setFirst(int_node);
     }else{
+        int_node->setNext(nullptr);
         ints->setFirst(int_node);
     }
 }
