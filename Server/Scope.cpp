@@ -139,7 +139,7 @@ string Scope::GetJson() {
     if (getNextScope() == nullptr) {
         return JS;
     }
-    return JS + getNextScope()->GetJson();
+    return JS +"{"+ getNextScope()->GetJson()+"}";
 }
 
 void Scope::Delete() {
@@ -150,6 +150,7 @@ void Scope::Delete() {
             auto *memory = new MemoryController;
             memory->setActualScope(getPreviousScope());
             setPreviousScope(nullptr);
+            setNextScope(nullptr);
             return;
         }
     }
@@ -193,13 +194,13 @@ void Scope::Delete() {
     delete references;
     while (structs->getFirst() != nullptr) {
         Scope *tmp_S = (Scope *) structs->getFirst()->getValue();
-        references->First= (references->getFirst()->getNext());
+        structs->First= (structs->getFirst()->getNext());
         tmp_S->Delete();
     }
     delete structs;
     while (id->getFirst() != nullptr) {
         tmp= id->getFirst();
-        id->First= id->getFirst()->getNext();
+      id->First= id->getFirst()->getNext();
         if(tmp!= nullptr){
             delete (string *)tmp->getValue();
             ::delete tmp;

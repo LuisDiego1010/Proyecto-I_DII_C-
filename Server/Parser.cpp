@@ -50,6 +50,13 @@ void Parser::Extract_instruction(const string &instruction) {
             Parser::logg+="Server: reseting data ["+to_simple_string(boost::posix_time::second_clock::local_time())+"]";
             Parser::out+="Server: reset memory";
             return;
+        }else if(Json["type"]=="unscope"){
+            Controller->Unscope();
+            Parser::logg+="Server: closing Scope or struct. ["+to_simple_string(boost::posix_time::second_clock::local_time())+"]";
+
+        }else if(Json["type"]=="scope"){
+            Controller->new_scope();
+            Parser::logg+="Server: Open Scope. ["+to_simple_string(boost::posix_time::second_clock::local_time())+"]";
         }
     } else {
         Parser::logg +=
@@ -741,6 +748,7 @@ string Parser::Instruction_Aux(string instruction) {
 string Parser::Generate_Json() {
     string JS;
     nlohmann::json Json;
+    Controller->testing_scope();
     JS = Controller->getMainScope()->GetJson();
     Json["Memory"] = JS;
     Json["out"] = out;

@@ -46,7 +46,8 @@ void MemoryController::new_scope() {
     auto *scope = new Scope();
     Parser::logg +=
             "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Creating a scope\n";
-    BOOST_LOG_TRIVIAL(info) << "Creating new scope";
+    Actual_Scope->setNextScope(scope);
+    scope->setPreviousScope(Actual_Scope);
     Actual_Scope = scope;
 }
 
@@ -123,7 +124,6 @@ LNode *MemoryController::define_structs(string tag) {
     auto *structure = new Scope();
     node2->setValue(structure);
     Actual_Scope->getStructs()->setFirst(node2);
-    structure->setPreviousScope(Actual_Scope);
     Actual_Scope=structure;
     return node2;
 }
@@ -234,6 +234,7 @@ void MemoryController::Unscope() {
     }
     if (Actual_Scope->getPreviousScope()== nullptr && Actual_Scope!=Main_Scope){
         Actual_Scope=Parser::GetLastScope();
+        return;
     }
     Actual_Scope = Actual_Scope->getPreviousScope();
     Actual_Scope->setNextScope(nullptr);

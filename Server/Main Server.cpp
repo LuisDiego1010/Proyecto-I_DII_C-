@@ -27,8 +27,6 @@ namespace logging = boost::log;
 namespace keywords = boost::log::keywords;
 namespace src = boost::log::sources;
 
-#define BOOST_LOG_DYN_LINK 1
-
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT (loggerC, src::logger_mt);
 
 void test();
@@ -78,8 +76,7 @@ int main(int argc, char *argv[]) {
         std::cout << "recieved data";
         std::cout << Request << "=data";
 //        call to things
-        message_t reply;
-//        reply.copy(msg.data());
+
         parsing->Extract_instruction(Request);
         Request = parsing->Generate_Json();
         cout << Request;

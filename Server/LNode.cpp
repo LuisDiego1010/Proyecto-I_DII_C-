@@ -117,7 +117,7 @@ string LNode::getJson() {
         Scope * Jsvalue= (Scope*) getValue();
         int *direction= reinterpret_cast<int *>(&Jsvalue);
         JS=JS+std::to_string(reinterpret_cast<int>(*direction))+" ";
-        JS=JS+"\n"+Jsvalue->GetJson();
+        JS=JS+"{\n"+Jsvalue->GetJson()+"}";
     } else if (type_string == "reference") {
         LNode * Jsvalue= (LNode*) getValue();
         int *direction= reinterpret_cast<int *>(&Jsvalue);
