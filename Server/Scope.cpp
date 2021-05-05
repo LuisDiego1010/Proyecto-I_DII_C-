@@ -208,7 +208,6 @@ void Scope::Delete() {
     }
     delete id;
     delete this;
-
 }
 
 

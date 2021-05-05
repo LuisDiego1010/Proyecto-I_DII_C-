@@ -76,7 +76,6 @@ int main(int argc, char *argv[]) {
         std::cout << "recieved data";
         std::cout << Request << "=data";
 //        call to things
-
         parsing->Extract_instruction(Request);
         Request = parsing->Generate_Json();
         cout << Request;
@@ -97,7 +96,7 @@ void test() {
     string b;
     a = R"({"type":"assign","left":"int a","rigth":"15*11"})";
     a2 = R"({"type":"assign","left":"a","rigth":"16"})";
-    b = R"({"type":"assign","left":"float b","rigth":"10.22"})";
+    b = R"({"type":"assign","left":"int b","rigth":"a"})";
     parser->Extract_instruction(a);
     cout << parser->Generate_Json()<<endl;
     parser->Extract_instruction(b);

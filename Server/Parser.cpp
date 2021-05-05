@@ -242,25 +242,32 @@ Parser::Parser() {
 LNode *Parser::Aux_Assign(const string &variable) {
     size_t space;
     size_t dot;
+    size_t com;
+    com = variable.find(';');
     dot = variable.find('.');
+    space = variable.find(' ');
     LNode *search = nullptr;
     string type_string;
-
+    string to_search=variable.substr(0,com);
     // detect if the code variable is a structure.propierty or a variable.
     if (dot == std::string::npos) {
-        search = Controller->search(variable);
+        if(space==std::string::npos){
+            to_search=" "+to_search;
+        }
+        search = Controller->search(to_search);
         if (search == nullptr) {
             Parser::logg +=
                     "[" + to_simple_string(boost::posix_time::second_clock::local_time()) + "] Not founded variable\n" +
                     variable;
             return search;
         }
-    } else {
+    }
+    else {
         //Do structure things
         string structure = variable.substr(0, dot);
         search = Controller->search(structure);
         if (search == nullptr) { return nullptr; }
-        string propierti = variable.substr(dot, string::npos);
+        string propierti = to_search.substr(dot, string::npos);
         auto *ptr = static_cast<Scope *>(search->getValue());
         ptr->Search(propierti);
         string type = ptr->getType();
@@ -293,7 +300,10 @@ string Parser::Instruction_Aux(string instruction) {
     rest = instruction.find('-');
     divide = instruction.find('/');
     multy = instruction.find('*');
-
+    if(sum == string::npos && rest == string::npos && divide == string::npos && multy == string::npos){
+        instruction+="+0";
+        sum = instruction.find('+');
+    }
     try {
         if (sum != string::npos) {
             LNode *first = Aux_Assign(instruction.substr(0, sum));
@@ -738,8 +748,9 @@ string Parser::Instruction_Aux(string instruction) {
         if(instruction==result && char_->getTypeString()=="char"){
             instruction=*(char*)char_->getValue();
         }
-    }
 
+
+    }
 
     return instruction;
 
